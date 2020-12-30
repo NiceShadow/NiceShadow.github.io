@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<title>NiceShadow</title>
+		<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" >
+	</head>
+	<body>
+	<div class="topnav">
+  <a href="index.html">Home</a>
+  <a class="active" href="#">Multiplayer Inventory</a>
+</div>
+		<img src="images/inventroyBanner.png" alt="banner" class="banner" onContextMenu="return false;">
+</br></br>
+
+<div class="container">
+
+<h1>Explanations & Tutorials</h1>
+<div class="accordion-item"><button class="accordion-link">
+Integration into your project
+</button><div class="panel"><p>
+You can either use the project as a base or add it to an existing project.
+This is very easy, even if you already have a player controller, game mode, 
+character or HUD. In <a href = "https://www.youtube.com/watch?v=PpWEsdawhOI&feature=youtu.be" class="link" target="_blank">this tutorial</a> I show you the individual steps that 
+you can take according to your needs. If you want to import the inventory project to your project make sure that you have the same collision channels in your project (I show it at the beginning of the tutorial).
+</br></br>
+<div class="accordion-item"><button class="accordion-link">
+<p style="color: grey; font-size: 1.1rem; ">Things you have to note if you want to combine it with ALS (Advanced Locomotion System V4)</p>
+</button><div class="panel"><p>
+If you can't climb/mantle anymore check the value of these two Trace Channels.
+Due to the import it could be changed to "PlaceTrace". Then you have to set it back to "Climbable".</br></br>
+<img src="images/alsBug1.png" width="100%" height="auto" onContextMenu="return false;">
+</p></div></div>
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">
+Add new items
+</button><div class="panel"><p>
+Open "Item_Table" and click on "Add" to add new items. <boldtext>To prevent any further problems make sure 
+that your Row Names must start with "NewRow_" + a unique number and set the ID to this number +1 (e.g. NewRow_12 and the ID is 13). 
+An exception is the Row Name "NewRow". This is for ID = 0.</boldtext> On the image are descriptions of the different variables you can setup in the Row Editor
+of the selected item.</br></br>
+<img src="images/add.png" width="100%" height="auto">
+</p></div></div>
+
+<div class="accordion-item"><button class="accordion-link">
+Add new craftable items
+</button><div class="panel"><p>
+
+</p></div></div>
+
+<div class="accordion-item"><button class="accordion-link">
+Setup armor
+</button><div class="panel"><p>
+
+</p></div></div>
+
+<div class="accordion-item"><button class="accordion-link">
+How to update the inventory to the latest version?
+</button><div class="panel"><p>
+Before you try to update to the latest version, it's recommend to backup your project. Then create a new inventory project:</br>
+<img src="images/cp.png" width="auto" height="auto" onContextMenu="return false;"></br></br>
+Now you can do different things, depending on the changes you made in the inventory system. If you made only small or no changes in the
+blueprint of the inventory system and made changes in the UI or added new items, then it's probably the easiest way to replace everything except the 'Item_Table', 'Craft_Table' and 'WB_Inventory' (or other widgets where you made UI changes).
+
+
+</p></div></div>
+
+<h1>Version Log</h1>
+<div class="accordion-item"><button class="accordion-link">
+Features and bug fixes of all versions
+</button><div class="panel"><p>
+
+</p></div></div>
+
+
+</div>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+<script>
+var acc = document.getElementsByClassName("accordion-link");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+     <footer>
+	 
+	 <table style="width: 100%">
+	 <tr>
+	 
+	 <th>
+	<h2 style ="text-align: left; color: grey;">Other</h2></br></br>
+                         <ul style="list-style-type: none; text-align: left;">
+                             <li><a href="" class="footerlink"><img src="images/other2.png" width="22 height="22"> Marketplace</a></li></br>
+                             <li><a href="" class="footerlink"><img src="images/other1.png" width="22 height="22"> YouTube</a></li></br>
+                         </ul>
+	</th>		
+	 <th>
+		 
+	 <th>
+	<h2 style ="text-align: left; color: grey;">Contact</h2></br></br>
+                         <ul style="list-style-type: none; text-align: left;">
+                             <li><a href="" class="footerlink"><img src="images/contact1.png" width="22 height="22"> Discord</a></li></br>
+                             <li><a href="" class="footerlink"><img src="images/contact2.png" width="22 height="22"> niceshadowhd@gmail.com</a></li>
+                         </ul>
+	</th>		
+
+	 <th>
+	<h2 style ="text-align: left; color: grey;">Other</h2></br></br>
+                         <ul style="list-style-type: none; text-align: left;">
+                             <li><a href="" class="footerlink"><img src="images/other2.png" width="22 height="22"> Marketplace</a></li></br>
+                             <li><a href="" class="footerlink"><img src="images/other1.png" width="22 height="22"> YouTube</a></li></br>
+                         </ul>
+	</th>		
+	 <th>
+
+		 </tr>
+		 </table>
+		 
+     </footer>
+ </div> -->
+
+
+<html>

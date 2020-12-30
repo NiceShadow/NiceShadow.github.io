@@ -1,0 +1,240 @@
+body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		font-family: 'Roboto';
+		background-size: cover;
+		background-color: #333;
+		color: #eee;
+		
+		  grid-template-columns: 300px auto;
+  grid-template-rows: 200px auto 200px;
+}
+
+.banner {
+		padding-top: 3em;
+		display: block;
+		width: 100%;
+		
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #444;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+.topnav a {
+  float: left;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 1rem 1rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.topnav a:hover {
+  background-color: #555;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.topnav a.active {
+  background-color: #a34f40;
+  color: white;
+}
+
+
+
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html{
+	box-sizing: border-box;
+}
+
+section{
+	width: 100%;
+	background.color: #3c4053;
+	display: grid;
+	place-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+test{
+
+	background.color: #3c4053;
+	display: flex;
+	align-items: left;
+	justify-content: left;
+	padding: 1rem;
+}
+
+.container{
+	width: 100%;
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.accordion-item{
+	background-color: #262626;
+	border radius: .4rem;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	box-shadow: .5rem 2px .5rem rgba(0,0,0,.1);
+
+}
+
+.accordion-link{
+	font-size: 1.3rem;
+	color: white;
+	text-decoration: none;
+	background-color: #262626;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 0;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.accordion-link:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion-link.active:after {
+  content: "\2212";
+}
+
+.accordion-link i{
+	color: white;
+	padding: .5rem;
+	font-style: normal;
+}
+
+.panel::before{
+	content: "";
+	position: absolute;
+	width: .3rem;
+	height: 100%;
+	background-color: #a34f40;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+
+.panel{
+	position: relative;
+	background-color: #303030;
+	padding: 2rem;
+	display: none;
+}
+
+.link{
+	color: #87c9ff;
+}
+
+h1{
+	font-weight: 100;
+	color: grey;
+	padding-top: 4rem;
+	padding-bottom: 1rem;
+}
+
+
+.footerlink{
+	color: #d1d1d1;
+	text-decoration: none;
+}
+
+.footerlink:hover{
+	color: white;
+}
+
+
+footer{
+	padding: 5rem;
+}
+
+boldtext{
+		color: yellow;
+}
+
+
+.container2{
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	flex-content: space-around;
+	flex-flow: wrap;
+	justify-content: center;
+}
+
+.box2{
+	width: 284px;
+	height: 284px;
+	background: green;
+	margin: 20px;
+	box-sizing: border-box;
+	
+	cursor: pointer;
+	background-image: url("images/InventoryLogo.png");
+	transition: .3s ease;
+}
+
+.overlay {
+
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 284px;
+	vertical-align: middle;
+	height: 284px;
+  transition: .3s ease;
+  opacity:0;
+  
+  color: white;
+  font-size: 25px;
+  
+  text-align: center;
+	-webkit-backdrop-filter: blur(8px) brightness(1.2);
+	backdrop-filter: blur(8px) brightness(1.2);
+}
+
+.box2:hover .overlay {
+	opacity: 1;
+    position: bottom; 
+	border-style: dashed;
+	
+}
+
+.box2:hover {
+	 transform: scale(1.1);
+	   transition: .3s ease;
+}
+
+
+.container3 {
+  position: relative;
+  width: 50%;
+  max-width: 300px;
+}
+
+
