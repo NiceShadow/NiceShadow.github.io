@@ -35,7 +35,7 @@
 <h1>Documentation</h1>
 
 <div class="accordion-item"><button class="accordion-link">
-How to update the inventory to the latest version (v 1.52) ?
+How to update the inventory to the latest version (v 1.6) ?
 </button><div class="panel"><p>
 Before you try to update to the latest version, it's recommend to backup your project. Then create a new inventory project:</br>
 <img src="images/cp.png" width="auto" height="auto" onContextMenu="return false;"></br></br>
@@ -45,13 +45,27 @@ Then you can copy the table entries (Item_Table & Craft_Table) from your backup 
 And do the changes you may made in the bleuprint of the inventory.
 </br></br>
 <div class="accordion-item"><button class="accordion-link">
-Update from v 1.51 to v 1.52 (latest)
+Update from v 1.52 to v 1.6 (latest)
+</button><div class="panel"><p>
+This update contains many new features and updating it from an older version takes much time.</br>
+If you didn't make big changes to the inventory and only added items, changed the UI or did small other changes, I would recommend to replace the whole inventory and then do the changes you had before again.
+Before your're doing backup your project.</br></br>
+If you made big changes to the inventory there is also the option to add all changes manually.</br>
+If you decide to do that make sure that your project is on v 1.52.</br>
+Create a new project with v 1.6 and search in the whole project for 'new in v 1.6' like on this image:</br></br>
+<img src="images/FindResults4.png" width="auto" height="auto" onContextMenu="return false;"></br>
+NOTE: It should return 91 comment boxes. If you have less results repeat the search (it's sometimes buggy).</br></br>
+Then you can copy and integrate the blueprint that is in these blue comment boxes to your project.
+</br>
+</p></div></div>
+<div class="accordion-item"><button class="accordion-link">
+Update from v 1.51 to v 1.52
 </button><div class="panel"><p>
 There's only one small bug fix and the update won't take much time.</br>
 Create a new project with v 1.52 and search in the whole project for 'Bug Fix v 1.52' like on this image:</br></br>
 <img src="images/FindResults3.png" width="auto" height="auto" onContextMenu="return false;"></br>
 NOTE: It should return 2 comment boxes. If you have less results repeat the search (it's sometimes buggy).</br></br>
-Then you can copy and integrate the blueprint that is in these blue comment boxes to your project.
+Then you can copy and integrate the blueprint that is in these green comment boxes to your project.
 </br>
 </p></div></div>
 <div class="accordion-item"><button class="accordion-link">
@@ -103,7 +117,16 @@ Open "Item_Table" and click on "Add" to add new items. <boldtext>To prevent any 
 that your Row Names must start with "NewRow_" + a unique number and set the ID to this number +1 (e.g. NewRow_12 and the ID is 13). 
 An exception is the Row Name "NewRow". This is for ID = 0.</boldtext> On the image are descriptions of the different variables you can setup in the Row Editor
 of the selected item.</br></br>
-<img src="images/add.png" width="100%" height="auto">
+<img src="images/add.png" width="100%" height="auto"></br></br>
+<div class="accordion-item"><button class="accordion-link">
+<p style="font-size: 1.1rem; ">Add pickupable ground items</p>
+</button><div class="panel"><p>
+Just drag 'BP_NewDropItemActor_Master' into your map:</br></br>
+<img src="images/PuckupItem.png" width="50%" height="auto" onContextMenu="return false;"></br></br>
+In the Details tab of this item set 'Spawn at Start?' on true. Then you change ID and Amount At start and you should see the mesh updating in the editor automatically.</br>
+<img src="images/ItemSpawnAtStart.png" width="50%" height="auto" onContextMenu="return false;"></br></br>
+
+</p></div></div>
 </p></div></div>
 
 
@@ -143,6 +166,9 @@ Features and bug fixes of all versions
   <li>Player to player trade: Trade in items; buy items; sell items</li>
   <li>Simple money system; It's stored in player state -> perfect for one session, otherwhise it's recommended to manage the money on a cloud so a player can receive offline money.</li>
   <li>3D item inspector: rotate item; item info and description</li>
+  <li>Campfires can cook a certain amount at once now</li>
+  <li>Option to equip item for the left hand too</li>
+  <li>bug fixes</li>
 </ul></br></br></br>
 
 <h3>New in v 1.51 (bug fixes of the following bugs)</h3></br>
@@ -159,7 +185,7 @@ Features and bug fixes of all versions
   <li>Backpack (set slot amount in ItemTable)</li>
   <li>Simple Third Person Shooter to show how it's connected with the inventory + weapon info & ammo system</li>
   <li>Lootboxes: hold a key to open -> drops items or adds them directly to the inventory</li>
-  <li>a few bug fixes (ask me for details)</li>
+  <li>A few bug fixes (ask me for details)</li>
   <li>and other small adjustments</li>
 </ul></br></br></br> 
 
