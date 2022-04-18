@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<title>NiceShadow</title>
+		<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" >
+	</head>
+	<body>
+<div class= "banner3">
+<a href="index.html">
+<div class= "homeBorder">
+
+
+<div id="wrapperDiv">
+
+<div id="div1" style="float: left;"><img src="images/logo.jpg" width="auto" height="50px" alt="logo" onContextMenu="return false;"></div>
+<div id="div2" style="float: left; padding-left: 30px;">Home</div>
+
+</div>
+
+</div>
+</a>
+
+<div class= "bannerText">NiceShadow</div></br>
+<div class="container2">
+		<a href="https://discord.gg/cecaphy" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/contact1.png" alt="banner" class="banner" onContextMenu="return false;"></div></a>
+		<a href="https://www.unrealengine.com/marketplace/en-US/profile/NiceShadow?count=20&sortBy=effectiveDate&sortDir=DESC&start=0" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/other2.png" alt="banner" class="banner" onContextMenu="return false;"></div></a>
+		<a href="https://www.youtube.com/NiceShadow" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/other1.png" alt="banner" class="banner" onContextMenu="return false;"></div></a>
+</div>
+</div>
+		
+</br></br></br></br></br></br>
+
+<div class="aboxCenter2">
+Revision (Legacy) - Set Player Data Function
+</div>
+</br>
+
+<div class="aboxCenter1">
+
+<mark class="blue_italic">handlers</mark>.<mark class="green">UpdatePlayerData</mark> <mark class="purple">=</mark> <mark class="blue_italic">function</mark> (<mark class="orange_italic">args</mark>, <mark class="orange_italic">context</mark>)</br>
+{</br>
+    &emsp;server.UpdateUserData({</br>
+    &emsp;&emsp;PlayFabId: currentPlayerId, </br>
+    &emsp;&emsp;Data: {</br>
+    &emsp;&emsp;&emsp;<mark class="yelow">"Jumps"</mark>: args.Jumps</br>
+    &emsp;&emsp;}</br>
+    &emsp;})</br>
+    </br>
+    &emsp;server.UpdateUserData({</br>
+    &emsp;&emsp;PlayFabId: currentPlayerId, </br>
+    &emsp;&emsp;Data: {</br>
+    &emsp;&emsp;&emsp;<mark class="yelow">"Shots"</mark>: args.Shots</br>
+    &emsp;&emsp;}</br>
+    &emsp;})</br>
+    </br>
+};</br>
+
+</br></br>
+<div class= "hideelem">
+<textarea type="text" rows="12" cols="100" value="Hello World" id="myInput">
+handlers.UpdatePlayerData = function (args, context)
+{
+    server.UpdateUserData({
+        PlayFabId: currentPlayerId, 
+        Data: {
+            "Jumps": args.Jumps
+        }
+    })
+    
+    server.UpdateUserData({
+        PlayFabId: currentPlayerId, 
+        Data: {
+            "Shots": args.Shots
+        }
+    })
+    
+};
+</textarea>
+</div>
+</div>
+<div class= "boxrightcenter">
+<button class="buttonf buttonf2" onclick="aa()" id="cp">Copy to clipboard</button>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+ &emsp;
+ 
+ <script>
+ 
+function aa(){
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+  document.getElementById("cp").innerHTML = "‎COPIED!‎‎‎";
+}
+ 
+ </script>
+ 
+<html>
