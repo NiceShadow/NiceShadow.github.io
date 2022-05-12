@@ -40,19 +40,19 @@ Revision (Legacy) - Set Player Data Function
 
 <mark class="blue_italic">handlers</mark>.<mark class="green">UpdatePlayerData</mark> <mark class="purple">=</mark> <mark class="blue_italic">function</mark> (<mark class="orange_italic">args</mark>, <mark class="orange_italic">context</mark>)</br>
 {</br>
-    &emsp;server.UpdateUserData({</br>
-    &emsp;&emsp;PlayFabId: currentPlayerId, </br>
-    &emsp;&emsp;Data: {</br>
-    &emsp;&emsp;&emsp;<mark class="yelow">"Jumps"</mark>: args.Jumps</br>
-    &emsp;&emsp;}</br>
-    &emsp;})</br>
+    &emsp;&emsp;server.UpdateUserData ( {</br>
+    &emsp;&emsp;&emsp;&emsp;PlayFabId: currentPlayerId, </br>
+    &emsp;&emsp;&emsp;&emsp;Data: {</br>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<mark class="yelow">"Jumps"</mark>: args.Jumps</br>
+    &emsp;&emsp;&emsp;&emsp;}</br>
+    &emsp;&emsp;} )</br>
     </br>
-    &emsp;server.UpdateUserData({</br>
-    &emsp;&emsp;PlayFabId: currentPlayerId, </br>
-    &emsp;&emsp;Data: {</br>
-    &emsp;&emsp;&emsp;<mark class="yelow">"Shots"</mark>: args.Shots</br>
-    &emsp;&emsp;}</br>
-    &emsp;})</br>
+    &emsp;&emsp;server.UpdateUserData ( {</br>
+    &emsp;&emsp;&emsp;&emsp;PlayFabId: currentPlayerId, </br>
+    &emsp;&emsp;&emsp;&emsp;Data: {</br>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<mark class="yelow">"Shots"</mark>: args.Shots</br>
+    &emsp;&emsp;&emsp;&emsp;}</br>
+    &emsp;&emsp;} )</br>
     </br>
 };</br>
 
