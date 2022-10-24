@@ -4,7 +4,7 @@ body {
 		height: 100%;
 		font-family: 'Arial';
 		background-size: cover;
-		background-color: #333;
+		background-color: #222;
 		color: #eee;
 
 		grid-template-columns: 300px auto;
@@ -176,7 +176,7 @@ test{
 
 .accordion-item{
 	line-height: 1.6;
-	background-color: #262626;
+	background-color: #1a1a1a;
 	border radius: .4rem;
 	margin-bottom: 1rem;
 	padding: 1rem;
@@ -188,7 +188,7 @@ test{
 	font-size: 1.3rem;
 	color: white;
 	text-decoration: none;
-	background-color: #262626;
+	background-color: #1a1a1a;
 	width: 100%;
 	display: flex;
 	align-items: center;
