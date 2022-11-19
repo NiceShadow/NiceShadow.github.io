@@ -6,38 +6,51 @@
 		<link rel="icon" href="images/fl3.ico">
 	</head>
 	<body>
+		<header>
+			<a href="index.html" class="logo"><img src="images/home.png" width="auto" height="50px" alt="logo" onContextMenu="return false;"></a>
+			<ul>
+				<li><a target="blank" href="https://www.unrealengine.com/marketplace/en-US/profile/NiceShadow?count=20&sortBy=effectiveDate&sortDir=DESC&start=0">Marketplace</a></li>
+				<li><a target="blank" href="https://www.youtube.com/NiceShadow">YouTube</a></li>
+				<li><a target="blank" href="https://discord.gg/cecaphy">Contact</a></li>
+			</ul>	
+		</header>
+		<script type="text/javascript">
+			window.addEventListener("scroll", function(){
+				var header = document.querySelector("header");
+				header.classList.toggle("sticky", window.scrollY > 0);
+		})
+		</script>
+	
+	
 <div class= "banner3">
-<a href="index.html">
-<div class= "homeBorder">
 
-
-<div id="wrapperDiv">
-
-<div id="div1" style="float: left;"><img src="images/logo.jpg" width="auto" height="50px" alt="logo" onContextMenu="return false;"></div>
-<div id="div2" style="float: left; padding-left: 30px;">Home</div>
-
-</div>
-
-</div>
-</a>
-
-<div class= "bannerText">NiceShadow</div></br>
-<div class="container2">
+<!--<div class= "bannerText">NiceShadow</div></br>-->
+<div class="container2" style="padding-top:345px;>
 		<a href="https://discord.gg/cecaphy" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/contact1.png" alt="banner" class="banner" onContextMenu="return false;"></div></a>
 		<a href="https://www.unrealengine.com/marketplace/en-US/profile/NiceShadow?count=20&sortBy=effectiveDate&sortDir=DESC&start=0" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/other2.png" alt="banner" class="banner" onContextMenu="return false;"></div></a>
 		<a href="https://www.youtube.com/NiceShadow" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/other1.png" alt="banner" class="banner" onContextMenu="return false;"></div></a>
 </div>
 </div>
-		
+
 </br></br>
 
 <div class="container">
 
 <h1>Documentation</h1>
 </br>
-<iframe width="1134" height="638" src="https://www.youtube.com/embed/Cs6YZNjSlAA" title="Integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</br></br></br></br></br>
-<iframe width="1134" height="638" src="https://www.youtube.com/embed/1_QQNNqxzQY" title="Adding new items" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+
+<div id="overlay" onclick="off()">
+  <div id="videoborder"><iframe id="myVideoId" width="1134" height="638" src="https://www.youtube.com/embed/c6N8h7RkkUQ" title="Integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+
+  <button class="videobutton" onclick="on('https://www.youtube.com/embed/Cs6YZNjSlAA')"><img src="images/thumbnailIntegration.png" width="200px" height="auto" onContextMenu="return false;"></br></button>
+  <button class="videobutton" onclick="on('https://www.youtube.com/embed/1_QQNNqxzQY')"><img src="images/thumbnailadditems.png" width="200px" height="auto" onContextMenu="return false;"></br></button>
+
+
 </br></br></br></br></br>
 More to follow soon...
 Need further help? <a href="https://discord.gg/cecaphy" target="blank" style="color: #57abeb">Get Support on Discord!</a>
@@ -170,6 +183,9 @@ If this didn't help please contact me.
 Features and bug fixes of all versions
 </button><div class="panel"><p>
 
+<h3>New in v 2.0</h3></br>
+See marketplace</br></br></br>
+
 <h3>New in v 1.6</h3></br>
 <ul style="padding-left: 30px">
   <li>Shop/Vendor: Product creator; product browser; sell to other players or AI</li>
@@ -215,6 +231,7 @@ Features and bug fixes of all versions
 
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 <script>
+
 var acc = document.getElementsByClassName("accordion-link");
 var i;
 
@@ -229,5 +246,35 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+//overlay
+function hideallvideos() {
+
+	var videos = document.querySelectorAll('iframe, video');
+	Array.prototype.forEach.call(videos, function (video) {
+		if (video.tagName.toLowerCase() === 'video') {
+			video.pause();
+		} else {
+			var src = video.src;
+			video.src = src;
+		}
+	});
+
+}
+
+
+
+//overlay1
+function on(url) {
+    document.getElementById("overlay").style.display = "block";
+    //var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
+    document.getElementById('myVideoId').src = url;
+}
+function off() {
+    document.getElementById("overlay").style.display = "none";
+	//hideallvideos();
+	document.getElementById('myVideoId').src = 'https://www.youtube.com/embed/c6N8h7RkkUQ';
+}
+
 </script>
 <html>
