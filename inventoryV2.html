@@ -36,7 +36,7 @@
 
 <div class="container">
 
-<h1>Documentation</h1>
+<h1>Video Documentation</h1>
 </br>
 
 
@@ -50,6 +50,52 @@
   <button class="videobutton" onclick="on('https://www.youtube.com/embed/Cs6YZNjSlAA')"><img src="images/thumbnailIntegration.png" width="200px" height="auto" onContextMenu="return false;"></br></button>
   <button class="videobutton" onclick="on('https://www.youtube.com/embed/1_QQNNqxzQY')"><img src="images/thumbnailadditems.png" width="200px" height="auto" onContextMenu="return false;"></br></button>
 
+
+</br></br></br></br></br>
+
+<h1>Written Documentation</h1>
+<div class="accordion-item"><button class="accordion-link">
+Bug Fixes
+</button><div class="panel"><p>
+Here are some bug small bug fixes. Mostly there will be a marketplace update but if you are working with the inventory already it's not worth for you redoing the whole integration process.
+Instead you can do the steps below.
+</br></br>
+
+<div class="accordion-item"><button class="accordion-link">
+<p style="color: grey; font-size: 1.1rem; ">Current 5.1 Bug Fixes</p>
+</button><div class="panel"><p>
+This is for everyone who is using ue5.1.
+The SetText node for editable texts has a buggy behaviour in ue5.1.
+The inventory uses it in the crafting menu. Because of the engine bug it is not possible to clear an entered text in an editable text box but only if the default text is empty too.
+To fix it, go to the EventGraph of WB_CraftingMenuSettings where you need to execute the SetText node twice. Make sure that the text input of the left SetText node is NOT empty. So you can enter
+for example '0' like on this image:</br>
+<img src="images/v51_fix2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+
+</p></div></div>
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link">
+<p style="color: grey; font-size: 1.1rem; ">Update from ue5.0 to ue5.1</p>
+</button><div class="panel"><p>
+Ignore this if you've downloaded the inventory after the 29th of November 2022 (then you have already a version that includes the bug fixes of this version).
+</br></br>
+If you have a 5.0 project and integrated the inventory already, you can go to your project's directory, right click on the .uproject file and select 'Switch Unreal Engine Version...'.
+Here choose 5.1 and click the Ok button. If you start the project now, it should open in ue5.1. Because of some engine bugs that appeared in 5.1 you can do the following workaround bug fixes:
+</br></br>
+
+1) Extend the following function like on the image:</br>
+<img src="images/v51_fix1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+
+2) Be aware that the muzzle flash (P_MuzzleFlash) can cause the GPU to crash. But it can depend on the GPU model and it's drivers.
+Anyways if you want to use P_MuzzleFlash, it's recommended that you open P_MuzzleFlash and deleted or deactivate all emitters except these two:</br>
+<img src="images/v51_fix3.png" width="50%" height="auto" onContextMenu="return true;"></br></br>
+
+
+</p></div></div>
+
+
+</p></div></div>
 
 </br></br></br></br></br>
 More to follow soon...
