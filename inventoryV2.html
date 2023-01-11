@@ -53,12 +53,29 @@
 <p style="color: #d45c28">IMPORTANT NOTE for integration: Migration got buggy in ue5.1. If you want to integrate the inventory in a 5.1 project make sure that you create the inventory project in
 ue5.0 (NOT 5.1) Then you can migrate the inventory to your 5.1 project and you should be fine.
 </p>
-</br></br></br></br></br>
+</br></br></br>
 
 <h1>Written Documentation</h1>
-<div class="accordion-item"><button class="accordion-link">
-Bug Fixes
-</button><div class="panel"><p>
+
+
+<!--
+<div class="accordion-item"><button class="accordion-link">OuterTitle</button><div class="panel"><p>
+Text1
+
+<div class="accordion-item"><button class="accordion-link"><p style="color: grey; font-size: 1.1rem; ">InnerTitle</p></button><div class="panel"><p>
+InnerBox Text1
+<img src="images/v51_fix2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+</p></div></div>
+-->
+
+
+
+
+
+
+<div class="accordion-item"><button class="accordion-link">Bug Fixes</button><div class="panel"><p>
 Here are some small bug fixes. Mostly there will be a marketplace update but if you are working with the inventory already it's not worth for you redoing the whole integration process.
 Instead you can do the steps below.
 </br></br>
@@ -92,12 +109,84 @@ Here choose 5.1 and click the Ok button. If you start the project now, it should
 2) Be aware that the muzzle flash (P_MuzzleFlash) can cause the GPU to crash. But it can depend on the GPU model and it's drivers.
 Anyways if you want to use P_MuzzleFlash, it's recommended that you open P_MuzzleFlash and deleted or deactivate all emitters except these two:</br>
 <img src="images/v51_fix3.png" width="50%" height="auto" onContextMenu="return true;"></br></br>
-
+</p></div></div>
 
 </p></div></div>
 
 
+
+<div class="accordion-item"><button class="accordion-link">Add Craftable item recipes</button><div class="panel"><p>
+In the data table DT_CraftingRecipes you can add a new row and set up the crafting recipe to your liking.</br></br>
+The tags are relevant for the search inside the crafting menu (WB_CraftingMenu).</br></br>
+
+<div class="accordion-item"><button class="accordion-link"><p style="color: grey; font-size: 1.1rem; ">Unlock System</p></button><div class="panel"><p>
+If you set a recipe in DT_CraftingRecipes on UnlockedByDefault: false, it will have a lock and you’re not able to craft this item. In your player controller you should find some key inputs (B, N, M) that should demonstrate how you can unlock a recipe.
+</br></br>
+From an inventory reference you need to get RefCraftingMenu and call the UnlockCraftableItem function. As ID enter the row name of a recipe that is added to DT_CraftingRecipe.
+</br></br>
+<img src="images/unlocksystem.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
 </p></div></div>
+
+</p></div></div>
+
+
+
+<div class="accordion-item"><button class="accordion-link">ItemString: the light version of the item structure</button><div class="panel"><p>
+How it works:</br>
+All items are based on a huge structure S_ItemData. It contains all data of an item, such as the name, icon, amount and so on.
+All these different variables can be categorized into two groups:
+</br></br>
+The first group contains all static variables. This is everything that doesn’t change while playing. For example the name or icon of an item stays always the same. Or the description of items with the ID ‘wood’ stays always the same, no matter what a player does with the item during gameplay.
+</br></br>
+The second group contains all dynamic variables. So everything that can change while playing. For stackable items this is for example the amount. Or if an item has durability, the current durability is always dynamic.
+</br></br>
+The ItemString is a formatted string that only contains the item ID and all dynamic data.
+With the ID, all static variables can be loaded again from the item data table.
+For you the ItemString can be used very easily. There are only two global functions that you need to know and that you can use in any blueprint. They convert the item structure (S_ItemData) to an ItemString and the other way around.
+</br></br>
+<img src="images/ItemString.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+The main advantage is that it’s much lighter to have a small string which contains only the relevant item data instead of a big item structure that contains stuff like directory paths to meshes or textures. For replication this is more efficient. Additionally to that, it’s much easier to store strings on an online database instead of a whole structure.
+</br>
+</p></div></div>
+
+
+
+<div class="accordion-item"><button class="accordion-link">Save & Load Game</button><div class="panel"><p>
+In your player controller you should find some key inputs that show how to trigger the save and load game functions for the inventory.</br></br>
+<img src="images/SaveAndLoad1.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
+</br>
+By default chests/containers are ignored from the save & load game functions.
+But you can change it really easily:
+Select a chest in your map. There, go to the Details tab and set the SaveGameID. If the SaveGameID is unique among all other chests/containers placed in the map, it's relevant for save game. If you don't want that it will be saved you can set the SaveGameID to 'No save game'.
+</br></br>
+<img src="images/SaveAndLoad2.png" width="70%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+
+
+<div class="accordion-item"><button class="accordion-link">Add new body Equip slots/categories</button><div class="panel"><p>
+First add a new entry to the ennumeration E_ArmorEquipSlot
+</br></br>
+<img src="images/equip1.png" width="40%" height="auto" onContextMenu="return true;">
+</br></br></br></br>
+In WB_EquipInventory (in the Design tab) you can now add a new WB_EquipSlot (Select your category on the right). This slot does not need to be necessarily inside WB_EquipInventory but make sure that WB_EquipInventory has a reference to this new equip slot: Take a look in the EventGraph and make sure that the equip slot is part of the Slots array.
+</br></br>
+<img src="images/equip2.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br></br>
+Info: The progress of adding a new equippable item is shown in the AddItems tutorial too.</br></br>
+<button class="videobutton" onclick="on('https://www.youtube.com/embed/1_QQNNqxzQY')"><img src="images/thumbnailadditems.png" width="200px" height="auto" onContextMenu="return false;"></br></button>
+</br></br>
+When you set up an item in a datatable make sure that the sub-structure EquipArmor is enabled and that you've selected your new category in the variable EquipSlot.
+</br></br>
+<img src="images/equip0.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br></br>
+If you play and try to equip the new item it will search in your character for a skeletal- or static mesh or a child actor (depending on what you added in the item table) that has a tag that matches the category you've added before in E_ArmorEquipSlot.
+</br></br>
+<img src="images/equip3.png" width="90%" height="auto" onContextMenu="return true;">
+</br></br></br>
+</p></div></div>
+
+
 
 </br></br></br></br></br>
 More to follow soon...
