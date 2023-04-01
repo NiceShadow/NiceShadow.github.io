@@ -58,30 +58,28 @@ ue5.0 (NOT 5.1) Then you can migrate the inventory to your 5.1 project and you s
 <h1>Written Documentation</h1>
 
 
-<!--
-<div class="accordion-item"><button class="accordion-link">OuterTitle</button><div class="panel"><p>
-Text1
 
-<div class="accordion-item"><button class="accordion-link"><p style="color: grey; font-size: 1.1rem; ">InnerTitle</p></button><div class="panel"><p>
-InnerBox Text1
-<img src="images/v51_fix2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
-</p></div></div>
+
+<!--
+<div class="accordion-item"><button id="InventoryModules" class="accordion-link">Title</button><div class="panel"><p>
+
+<img src="images/image.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
 
 </p></div></div>
 -->
 
+<!--
+<a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>
+-->
 
 
-
-
-
-<div class="accordion-item"><button class="accordion-link">Bug Fixes</button><div class="panel"><p>
+<div class="accordion-item"><button id="BugFixes" class="accordion-link">Bug Fixes</button><div class="panel"><p>
 Here are some small bug fixes. Mostly there will be a marketplace update but if you are working with the inventory already it's not worth for you redoing the whole integration process.
 Instead you can do the steps below.
 </br></br>
 
 <div class="accordion-item"><button class="accordion-link">
-<p style="color: grey; font-size: 1.1rem; ">Current 5.1 Bug Fixes</p>
+<p style="font-size: 1.1rem; ">Current 5.1 Bug Fixes</p>
 </button><div class="panel"><p>
 This is for everyone who is using ue5.1.
 The SetText node for editable texts has a buggy behaviour in ue5.1.
@@ -94,8 +92,8 @@ for example '0' like on this image:</br>
 
 
 </br>
-<div class="accordion-item"><button class="accordion-link">
-<p style="color: grey; font-size: 1.1rem; ">Update from ue5.0 to ue5.1</p>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Update from ue5.0 to ue5.1</p>
 </button><div class="panel"><p>
 Ignore this if you've downloaded the inventory after the 29th of November 2022 (then you have already a version that includes the bug fixes of this version).
 </br></br>
@@ -114,12 +112,30 @@ Anyways if you want to use P_MuzzleFlash, it's recommended that you open P_Muzzl
 </p></div></div>
 
 
+<div class="accordion-item"><button id="InventoryModules" class="accordion-link">Inventory Modules</button><div class="panel"><p>
+There are 12 modules that you can turn on/off with one click in DA_InventoryModules:</br>
+<img src="images/inventorymodules.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+After turning off a module the blueprint is not executing blueprint nodes anymore that are related to that feature. Some of the modules are additionally just hiding widgets like for the ground list. However, for example if you don’t need the ground list you can also remove E_WB_GroundItemList from WB_Inventory (you would get one blueprint error that you should be able to resolve easily if you see it).
+In general disabling modules only makes blueprints not be executed, it’s not removing the corresponding blueprints. Please do NOT try to remove these blueprint parts since if the blueprint nodes get skipped anyways there would be no measurable performance difference and you would keep the possibility to turn on the feature again in the future.
 
-<div class="accordion-item"><button class="accordion-link">Add Craftable item recipes</button><div class="panel"><p>
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemStructure" class="accordion-link">Expanding item structure (S_ItemData) with new variables</button><div class="panel"><p>
+Warning: In ue5 structures got buggy. Before you decide to add new variables to any structure I recommend doing a backup of your project. 
+If you add a new variable to the structure set 'Editable' to false for this variable to prevent unexpected and random structure compiling errors.</br></br>
+<img src="images/itemstructure.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
+This problem rather happens in bigger structures like the item structure (S_ItemData). 
+Another tip to reduce the buggy behavior and to keep the item data structure cleaner is to create sub structures (so normal structures that you add as a new variable to S_ItemData). 
+This makes sense if you want to expand the item data structure with different variables that belong to each other, like e.g. weapon data contains damage, shooting interval and so on.
+</p></div></div>
+
+
+<div class="accordion-item"><button id="AddRecipes" class="accordion-link">Add craftable item recipes</button><div class="panel"><p>
 In the data table DT_CraftingRecipes you can add a new row and set up the crafting recipe to your liking.</br></br>
 The tags are relevant for the search inside the crafting menu (WB_CraftingMenu).</br></br>
 
-<div class="accordion-item"><button class="accordion-link"><p style="color: grey; font-size: 1.1rem; ">Unlock System</p></button><div class="panel"><p>
+<div class="accordion-item"><button class="accordion-link"><p style="font-size: 1.1rem; ">Unlock System</p></button><div class="panel"><p>
 If you set a recipe in DT_CraftingRecipes on UnlockedByDefault: false, it will have a lock and you’re not able to craft this item. In your player controller you should find some key inputs (B, N, M) that should demonstrate how you can unlock a recipe.
 </br></br>
 From an inventory reference you need to get RefCraftingMenu and call the UnlockCraftableItem function. As ID enter the row name of a recipe that is added to DT_CraftingRecipe.
@@ -130,10 +146,9 @@ From an inventory reference you need to get RefCraftingMenu and call the UnlockC
 </p></div></div>
 
 
-
 <div class="accordion-item"><button class="accordion-link">ItemString: the light version of the item structure</button><div class="panel"><p>
 How it works:</br>
-All items are based on a huge structure S_ItemData. It contains all data of an item, such as the name, icon, amount and so on.
+All items are based on a huge structure <a href="javascript:se('ItemStructure')" class="customlink">S_ItemData</a>. It contains all data of an item, such as the name, icon, amount and so on.
 All these different variables can be categorized into two groups:
 </br></br>
 The first group contains all static variables. This is everything that doesn’t change while playing. For example the name or icon of an item stays always the same. Or the description of items with the ID ‘wood’ stays always the same, no matter what a player does with the item during gameplay.
@@ -150,7 +165,6 @@ The main advantage is that it’s much lighter to have a small string which cont
 </p></div></div>
 
 
-
 <div class="accordion-item"><button class="accordion-link">Save & Load Game</button><div class="panel"><p>
 In your player controller you should find some key inputs that show how to trigger the save and load game functions for the inventory.</br></br>
 <img src="images/SaveAndLoad1.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
@@ -161,7 +175,6 @@ Select a chest in your map. There, go to the Details tab and set the SaveGameID.
 </br></br>
 <img src="images/SaveAndLoad2.png" width="70%" height="auto" onContextMenu="return true;"></br></br>
 </p></div></div>
-
 
 
 <div class="accordion-item"><button class="accordion-link">Add new body Equip slots/categories</button><div class="panel"><p>
@@ -187,9 +200,60 @@ If you play and try to equip the new item it will search in your character for a
 </p></div></div>
 
 
+<div class="accordion-item"><button id="filter" class="accordion-link">Item Filters & Item Category Filter</button><div class="panel"><p>
+These are filters that are used in different areas of the inventory. Generally every slot can have a filter to determine which items it accepts. 
+For backpacks or chests it’s also possible to apply filters to all of their slots.
+Besides that these filters also find a use case for AutoPickUpMode.
+</br></br>
+<b>How to adjust the filters</b>
+</br></br>
+ItemFilter:</br>
+It’s a String that you can leave empty to apply no filter. 
+Enter all item IDs separated with ',' that should get accepted. Starting with '!' inverts the filter (so these items are excluded). 
+NOTE: the '!' should only be the first char of this value and NOT in front of each item ID.
+</br></br>
+CategoryFilter:</br>
+Same as ItemFilter it’s a String that you can leave empty to apply no filter. 
+Enter all item categories separated with ',' that should get accepted. Starting with '!' inverts the filter (so these categories are excluded). 
+NOTE: the '!' should only be the first char of this value and NOT in front of each category.
+
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemCategories" class="accordion-link">Item Categories</button><div class="panel"><p>
+These are the default item categories:</br>
+<img src="images/itemcategories.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+They can be used for Item Category Filters so for example you could make a chest that only can store items of the category Resources. Or that your character only can auto pick up items of the category Ammo.
+Besides that the item category is being displayed in the ItemInfo, InfoPickUp and the ItemInspector.
+</br></br>
+To add or remove item categories you can simply do that in the enumeration E_ItemCategory.
+</br></br>
+To apply or change the item category of an item you can do that in the ItemDataTables (AdditionalGeneralData->Category)
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="AutoPickUpMode" class="accordion-link">AutoPickUpMode</button><div class="panel"><p>
+Automatically picking up items if a player walks above item actors.
+The inventory automatically fetches a box or sphere collision component in your character that has the tag ‘autopickup’</br></br>
+<img src="images/autopickup.png" width="80%" height="auto" onContextMenu="return true;"></br></br></br>
+Also make sure that this collision component has Generate Overlap Events enabled, 
+has an object type of WorldDynamic and overlaps PhysicsBody all other channels can be set to Ignore. Like here:</br></br>
+<img src="images/autopickup2.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
+By default the auto pick up mode only picks up Ammo. This is an Item Category filter in AC_InventoryCharacterComponent. There you can adjust the filters in the 2 string variables CurrentAutoPickUpModeItemFilter and CurrentAutoPickUpModeCategoryFilter (Help to set up these filters).
+</br></br>
+The AutoPickUpMode is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.
+
+</p></div></div>
+
+
+
 
 </br></br></br></br></br>
 More to follow soon...
+
+
 <h1>Need further help? Get Support on Discord!</h1>
 </br>
 <iframe src="https://discord.com/widget?id=409731562310074368&theme=dark" width="400" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="-webkit-box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.53);-moz-box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.53);box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.53);"></iframe>
@@ -318,12 +382,64 @@ If this didn't help please contact me.
 -->
 
 <h1>Version Log</h1>
-<div class="accordion-item"><button class="accordion-link">
-Features and bug fixes of all versions
-</button><div class="panel"><p>
+
+
+<div class="accordion-item"><button class="accordion-link">Detailed feature list of current version (v 2.0.3)</button><div class="panel"><p>
+
+<ul style="padding-left: 30px">
+  <li>Add new items in data tables: Set up an item with more than 80 variables to tweak</li>
+  <li>Easy to expand item structure</li>
+  <li>Item structure organized in modules (e.g. simply toggle rarity or durability on/off)</li>
+  <li>Drag & Drop: Rearrange, swap & split items</li>
+  <li>Drop items physical on floor</li>
+  <li>Pick up items (by focusing it / by ground list / by auto pick up mode)</li>
+  <li>Groundlist: Shows all items near the player (possible to pick up a specific amount)</li>
+  <li>Auto Pick Up Mode: Walk above items to pick them up (relevancy filter for certain items can be added)</li>
+  <li>Equip items to hand or body (easy notify event about equipped/unequipped item IDs)</li>
+  <li>Off Hand: Equip item to 2nd hand (define with which main hand items it is compatible)</li>
+  <li>Advanced Chest System (Define slot amount, item filter, chest mesh & starting items)</li>
+  <li>Chest Multiplayer experience on next level (Move item around locally and without latency. Server validates each step in backend. Usually players need to wait on each validation which feels bad with a ping > 50. But in this inventory it feels fluent which is outstanding!)</li>
+  <li>Cooking Station: Based on chest system (Campfire, Forge -> Easy to add more types because system is highly customizable)</li>
+  <li>Loot Chest: Opens only once and drops some items on floor (define which items it should contain with % possibility whether item should be in)</li>
+  <li>Consume items: Easy notify with item ID after item got successfully consumed</li>
+  <li>Backpacks: Add additonal slots (Support for multiple backpack equipped at same time)</li>
+  <li>Vendor and money system (Add starting products, Buy, Sell -> either to AI or to other players)</li>
+  <li>Player to player trade (fair trade solution for 2 players -> Both need to confirm a trade)</li>
+  <li>Player to player trades: Swap item with item, Sell/Buy an item with money</li>
+  <li>Crafting System (Add recipes in data table, queue system, unlock recipes system)</li>
+  <li>Loot dead body (Player ragdoll death with respawn system) - Players can inspect dead body like a chest</li>
+  <li>Inspect items (Possible if hovering item in UI or if tracing item actor in world) - Drag to rotate mesh preview</li>
+  <li>Anvil: Dismantle & destroy items</li>
+  <li>Interaction System (Easy to make everything interactable)</li>
+  <li>Basic, optional Third Person Shooter (Recoil, aim, reload, projectile, damage (+ head shot multiplier), accuracy - All based on values of equipped weapon)</li>
+  <li>Health & Damage system</li>
+  <li>Item rarity (Visually colorize item background & info about rarity type)</li>
+  <li>Item durability (lose/gain durability per use or lose constantly durability if equipped e.g. torch)</li>
+  <li>Item String (Short, efficient string of all dynamic item data (e.g. amount) that can not be taken from static data table values): Lighter for replication & storing item data</li>
+  <li>Save & Load Game and possibility to store in database (Player inventory items, money, crafting unlocks, item actors on ground, vendor & chest data)</li>
+  <li>System to store all this data in single strings or in string arrays</li>
+</ul></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">Features and bug fixes of all versions</button><div class="panel"><p>
 
 <h3>New in v 2.0</h3></br>
-See marketplace</br></br></br>
+<ul style="padding-left: 30px">
+  <li>Revised UI</li>
+  <li>New meshes</li>
+  <li>Loot dead body</li>
+  <li>Anvil</li>
+  <li>Crafting Unlock system</li>
+  <li>Off hand/2nd hand equip slot</li>
+  <li>Health & Damage system</li>
+  <li>Multiple bakcpack support</li>
+  <li>New interaction system</li>
+  <li>Item rarity</li>
+  <li>Item String</li>
+  <li>and many more improvements & bug fixes</li>
+</ul></br></br></br>
 
 <h3>New in v 1.6</h3></br>
 <ul style="padding-left: 30px">
@@ -333,7 +449,7 @@ See marketplace</br></br></br>
   <li>3D item inspector: rotate item; item info and description</li>
   <li>Campfires can cook a certain amount at once now</li>
   <li>Option to equip item for the left hand too</li>
-  <li>bug fixes</li>
+  <li>Bug fixes</li>
 </ul></br></br></br>
 
 <h3>New in v 1.51 (bug fixes of the following bugs)</h3></br>
@@ -384,6 +500,23 @@ for (i = 0; i < acc.length; i++) {
       panel.style.display = "block";
     }
   });
+}
+
+function se(pID){
+    var element = document.getElementById(pID);
+    var headerOffset = 120;
+    var elementPosition = element.getBoundingClientRect().top;
+    var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+    window.scrollTo({
+         top: offsetPosition,
+         behavior: "smooth"
+    });
+
+
+	if(element.nextElementSibling.style.display != "block"){
+	element.click();
+	}
 }
 
 //overlay
