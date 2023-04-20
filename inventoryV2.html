@@ -248,6 +248,30 @@ The AutoPickUpMode is a module that you can turn off in <a href="javascript:se('
 </p></div></div>
 
 
+<div class="accordion-item"><button id="AutoPickUpMode" class="accordion-link">Consume Item</button><div class="panel"><p>
+To make an item consumable you need to go to the item in the item data table. There under 'ConsumeItem' set Enabled to true. 
+Now you can hold right mouse button while you’ve the item selected in the hotbar / holding it in hand (to change the right mouse button input you can do that in your player controller).
+</br></br>
+<img src="images/Consume1.png" width="50%" height="auto" onContextMenu="return true;"></br></br></br>
+In the item data table you have more settings like duration or wether the item should only be consumable if the character is on ground -> this could be 
+useful if you add a consume montage where it could look bad if the character is playing the montage while jumping or moving. It is an array so 
+you could play different montages depending on potentially different skeletons that your player character can have. 
+To determine which array element should be taken here by a character, you can change the array index by adjusting the MontageIndex in your character. 
+You can find that if you select in the components tab <b>AC_InventoryCharacterComponent</b> in your character. In the Details tab you can now adjust the MontageIndex.</br></br>
+<img src="images/Consume2.png" width="35%" height="auto" onContextMenu="return true;"></br></br>
+Finally in the data table you can set the ConsumeFinishedTag. This tag will be passed in a function that will be triggered once you have consumed an item. 
+Depending on the tag you can execute further events and effects. 
+In <b>AC_InventoryCharacterComponent</b> you can find the function <b>OnItemConsumed</b>. 
+Here you add more tags to the 'Switch on String'.
+</br></br>
+<img src="images/Consume3.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
+
+</p></div></div>
+
+
+
+
+
 
 
 </br></br></br></br></br>
