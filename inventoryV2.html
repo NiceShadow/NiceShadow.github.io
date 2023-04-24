@@ -73,6 +73,38 @@ ue5.0 (NOT 5.1) Then you can migrate the inventory to your 5.1 project and you s
 -->
 
 
+<div class="accordion-item"><button id="UsefulInventoryFunctions" class="accordion-link">Useful inventory functions you need to know</button><div class="panel"><p>
+Here is an image showing some basic inventory functions:</br></br>
+<img src="images/usefulinv_1.png" width="70%" height="auto" onContextMenu="return true;"></br></br>
+Having a reference to <b>WB_Inventory</b> is very useful. <b>GetInventoryRef</b> is a global function that you can get in every blueprint. 
+If you use it really often in a certain blueprint it might be useful to create an inventory reference variable but it is not necessary. 
+With the inventory ref you get access to the inventory player controller component <b>AC_InventoryPC_Component</b>. 
+For example you can get the current selected hotbar item from it.
+</br></br></br>
+<i>(NOTE in general if an inventory item is not visible the slot is empty so there is no item. 
+If you get the item data make sure before that the item is visible).</i>
+</br></br></br>
+From the player controller component you can also get the CharacterInventoryComponent.
+</br></br></br>
+To come back to the inventory reference the <b>AddItemSimple</b> node is often used to add items to the player’s inventory. 
+Also <b>GetTotalAmountOfID</b> is useful to count the current amount of items in the inventory. 
+You can also check if the amount is bigger than 0 to find out if at all an item is in the player’s inventory.
+</br></br>
+If you want that the server adds items to a player the server needs to know the controller of this player and by that can execute something like this:
+</br></br>
+<img src="images/usefulinv_2.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
+The ‘PC of player’ should not be the ‘get player controller node’ but maybe a player controller variable that the server received from the player. 
+For example a player wants to harvest an actor and requests it from the server while also passing its own player controller. 
+The server checks if the HP of the actor to harvest is still bigger 0 and there was no other player who requested the harvest a millisecond before. 
+Then the server determines if it is valid that a player gets the item and there is no glitch that 2 or more people got an item if there was only one item left.
+</br></br></br>
+Moreover you can get an array of all item slots with the inventory reference:</br></br>
+<img src="images/usefulinv_3.png" width="35%" height="auto" onContextMenu="return true;"></br></br>
+
+
+</p></div></div>
+
+
 <div class="accordion-item"><button id="BugFixes" class="accordion-link">Bug Fixes</button><div class="panel"><p>
 Here are some small bug fixes. Mostly there will be a marketplace update but if you are working with the inventory already it's not worth for you redoing the whole integration process.
 Instead you can do the steps below.
@@ -125,20 +157,20 @@ In general disabling modules only makes blueprints not be executed, it’s not r
 Warning: In ue5 structures got buggy. Before you decide to add new variables to any structure I recommend doing a backup of your project. 
 If you add a new variable to the structure set 'Editable' to false for this variable to prevent unexpected and random structure compiling errors.</br></br>
 <img src="images/itemstructure.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
-This problem rather happens in bigger structures like the item structure (S_ItemData). 
-Another tip to reduce the buggy behavior and to keep the item data structure cleaner is to create sub structures (so normal structures that you add as a new variable to S_ItemData). 
+This problem rather happens in bigger structures like the item structure <b>S_ItemData</b>. 
+Another tip to reduce the buggy behavior and to keep the item data structure cleaner is to create sub structures (so normal structures that you add as a new variable to <b>S_ItemData</b>). 
 This makes sense if you want to expand the item data structure with different variables that belong to each other, like e.g. weapon data contains damage, shooting interval and so on.
 </p></div></div>
 
 
-<div class="accordion-item"><button id="AddRecipes" class="accordion-link">Add craftable item recipes</button><div class="panel"><p>
-In the data table DT_CraftingRecipes you can add a new row and set up the crafting recipe to your liking.</br></br>
-The tags are relevant for the search inside the crafting menu (WB_CraftingMenu).</br></br>
+<div class="accordion-item"><button id="AddRecipes" class="accordion-link">Crafting System - Add craftable item recipes</button><div class="panel"><p>
+In the data table <b>DT_CraftingRecipes</b> you can add a new row and set up the crafting recipe to your liking.</br></br>
+The tags are relevant for the search inside the crafting menu <b>WB_CraftingMenu</b>.</br></br>
 
 <div class="accordion-item"><button class="accordion-link"><p style="font-size: 1.1rem; ">Unlock System</p></button><div class="panel"><p>
-If you set a recipe in DT_CraftingRecipes on UnlockedByDefault: false, it will have a lock and you’re not able to craft this item. In your player controller you should find some key inputs (B, N, M) that should demonstrate how you can unlock a recipe.
+If you set a recipe in <b>DT_CraftingRecipes</b> on UnlockedByDefault: false, it will have a lock and you’re not able to craft this item. In your player controller you should find some key inputs (B, N, M) that should demonstrate how you can unlock a recipe.
 </br></br>
-From an inventory reference you need to get RefCraftingMenu and call the UnlockCraftableItem function. As ID enter the row name of a recipe that is added to DT_CraftingRecipe.
+From an inventory reference you need to get <b>RefCraftingMenu</b> and call the <b>UnlockCraftableItem</b> function. As ID enter the row name of a recipe that is added to <b>DT_CraftingRecipe</b>.
 </br></br>
 <img src="images/unlocksystem.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
 </p></div></div>
@@ -146,8 +178,8 @@ From an inventory reference you need to get RefCraftingMenu and call the UnlockC
 </p></div></div>
 
 
-<div class="accordion-item"><button class="accordion-link">ItemString: the light version of the item structure</button><div class="panel"><p>
-How it works:</br>
+<div class="accordion-item"><button id="ItemString" class="accordion-link">ItemString: the light version of the item structure</button><div class="panel"><p>
+<u>How it works:</u></br>
 All items are based on a huge structure <a href="javascript:se('ItemStructure')" class="customlink">S_ItemData</a>. It contains all data of an item, such as the name, icon, amount and so on.
 All these different variables can be categorized into two groups:
 </br></br>
@@ -155,9 +187,11 @@ The first group contains all static variables. This is everything that doesn’t
 </br></br>
 The second group contains all dynamic variables. So everything that can change while playing. For stackable items this is for example the amount. Or if an item has durability, the current durability is always dynamic.
 </br></br>
+If you want to know how to add own dynamic variables take a look in <a href="javascript:se('DynamicItemData')" class="customlink">Update item data variables at runtime (dynamic & static item data)</a>.
+</br></br>
 The ItemString is a formatted string that only contains the item ID and all dynamic data.
 With the ID, all static variables can be loaded again from the item data table.
-For you the ItemString can be used very easily. There are only two global functions that you need to know and that you can use in any blueprint. They convert the item structure (S_ItemData) to an ItemString and the other way around.
+For you the ItemString can be used very easily. There are only two global functions that you need to know and that you can use in any blueprint. They convert the item structure <b>S_ItemData</b> to an ItemString and the other way around.
 </br></br>
 <img src="images/ItemString.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
 The main advantage is that it’s much lighter to have a small string which contains only the relevant item data instead of a big item structure that contains stuff like directory paths to meshes or textures. For replication this is more efficient. Additionally to that, it’s much easier to store strings on an online database instead of a whole structure.
@@ -165,9 +199,26 @@ The main advantage is that it’s much lighter to have a small string which cont
 </p></div></div>
 
 
+<div class="accordion-item"><button id="DynamicItemData" class="accordion-link">Update item data variables at runtime (dynamic & static item data)</button><div class="panel"><p>
+The variables in the item structure <b>S_ItemData</b> are either static or dynamic to understand the difference and how it works take a look in <a href="javascript:se('ItemString')" class="customlink">ItemString:  the light version of the item structure</a>
+</br></br>
+So how to proceed if you want to make a certain variable <b>in S_ItemData</b> dynamic - possible to edit the value while playing. 
+First open <b>BP_InventoryFunctions</b>. Go to the function <b>ItemDataToString</b>. 
+From the Break <b>S_ItemData</b> you need to get your variable and convert it to the string (if it is not possible to convert it to a string you also cannot make this variable dynamic). 
+Then you need a new <b>FormatItemDataString</b> node where you can put your string value in the Value pin. Also make sure that ‘Add’ is true, otherwise it would ignore this node. 
+Then you need to come up with a VariableNameID (like a key) - keep it short. Finally plug the Result of <b>FormatItemDataString</b> in a new pin of the Append node. 
+</br></br>
+Next go in the function <b>StringToItemData</b>. Add a pin to <b>the Switch on String</b> node. Make sure that this pin value matches the VariableNameID you applied before in <b>ItemDataToString</b>. 
+Then you need to Set members in the ItemData variable or in a sub-structure of it and put it in the Value variable for the variable that should be dynamic. 
+It helps look at how it is made for the already existing dynamic variables.
+</br></br>
+
+</p></div></div>
+
+
 <div class="accordion-item"><button class="accordion-link">Save & Load Game</button><div class="panel"><p>
 In your player controller you should find some key inputs that show how to trigger the save and load game functions for the inventory.</br></br>
-<img src="images/SaveAndLoad1.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
+<img src="images/SaveAndLoad1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
 </br>
 By default chests/containers are ignored from the save & load game functions.
 But you can change it really easily:
@@ -200,10 +251,48 @@ If you play and try to equip the new item it will search in your character for a
 </p></div></div>
 
 
+<div class="accordion-item"><button id="EquipNotify" class="accordion-link">Equip Notify Events (Hand and Body/Armor)</button><div class="panel"><p>
+There are several events that get triggered (already replicated, so they get called on each client and the server) if you equip or unequip an item either in hand or body. 
+You can make use of these events if you add them in your character.
+Then click on <b>AC_InventoryCharacterComponent</b> and in the Details tab you can add these Events to your Event Graph like on the image shown below.
+</br></br>
+<ul style="padding-left: 30px">
+  <li>EventOnEquipID_Hand</li>
+  <li>EventOnUnequipID_Hand</li>
+  <li>EventOnEquipID_Body</li>
+  <li>EventOnUnequipID_Body</li>
+  <li>EventOnEquipmentChanged_GetAllEquippedItems</li>
+</ul>
+</br></br>
+<img src="images/EquipNotify_1.png" width="100%" height="auto" onContextMenu="return true;">
+</br></br></br>
+<u>Hand (hotbar)</u></br>
+Whenever you select an item in the hotbar (hand equip) EventOnEquipID_Hand and EventOnUnequipID_Hand get triggered. 
+You can add Switch on Name nodes here to execute further events that should happen on equip or unequip of a certain item ID.
+<img src="images/EquipNotify_2.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br>
+
+<u>Body/Armor (Equip Inventory)</u></br>
+There are also several events that get triggered if there are any changes of items being added or taken away from the equip menu:
+<img src="images/EquipNotify_3.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br>
+As you can see, the last event <b>EventOnEquipmentChanged_GetAllEquippedItems</b> passes an array of all equipped body items.
+</br></br>
+Example - armor points and damage reduction:</br>
+This is useful if you want to calculate for example armor points. 
+So for example with ForEachLoop you can calculate a sum of an integer variable (that you need to add - a variable that should represent the armor strength of this item). 
+This sum can be stored in a variable that could be implemented in your damage system for damage reduction. 
+Here it would also make sense to calculate this variable only on server and since this event is triggered for all players, 
+you can make sure with a SwitchHasAuthority node that it only will be calculated on Server (Authority = Server).
+</br></br>
+
+</p></div></div>
+
+
 <div class="accordion-item"><button id="filter" class="accordion-link">Item Filters & Item Category Filter</button><div class="panel"><p>
 These are filters that are used in different areas of the inventory. Generally every slot can have a filter to determine which items it accepts. 
 For backpacks or chests it’s also possible to apply filters to all of their slots.
-Besides that these filters also find a use case for AutoPickUpMode.
+Besides that these filters also find a use case for <a href="javascript:se('AutoPickUpMode')" class="customlink">AutoPickUpMode</a>.
 </br></br>
 <b>How to adjust the filters</b>
 </br></br>
@@ -243,12 +332,12 @@ has an object type of WorldDynamic and overlaps PhysicsBody all other channels c
 <img src="images/autopickup2.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
 By default the auto pick up mode only picks up Ammo. This is an Item Category filter in AC_InventoryCharacterComponent. There you can adjust the filters in the 2 string variables CurrentAutoPickUpModeItemFilter and CurrentAutoPickUpModeCategoryFilter (Help to set up these filters).
 </br></br>
-The AutoPickUpMode is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.
+The AutoPickUpMode is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.</br>
 
 </p></div></div>
 
 
-<div class="accordion-item"><button id="AutoPickUpMode" class="accordion-link">Consume Item</button><div class="panel"><p>
+<div class="accordion-item"><button id="ConsumeItem" class="accordion-link">Consume Item</button><div class="panel"><p>
 To make an item consumable you need to go to the item in the item data table. There under 'ConsumeItem' set Enabled to true. 
 Now you can hold right mouse button while you’ve the item selected in the hotbar / holding it in hand (to change the right mouse button input you can do that in your player controller).
 </br></br>
@@ -269,13 +358,102 @@ Here you add more tags to the 'Switch on String'.
 </p></div></div>
 
 
+<div class="accordion-item"><button id="OffHand" class="accordion-link">Off Hand / 2nd hand items</button><div class="panel"><p>
 
+<img src="images/OffHand_1.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
+
+The off hand / 2nd hand slot is a special equip slot that is managed by the <b>WB_EquipInventory</b>. Hence the <b>WB_EquipInventory</b> has a reference to this equip slot.
+The inventory has a torch item as example for an off hand item - if you equip a torch to this slot, 
+the torch shows up in the player’s left hand and the character also enters a holding pose in the animation blueprint.
+</br></br>
+<u>Off Hand Compatibility</u></br>
+There might be some items (like certain weapons) that need both hands. 
+In this case the off hand should not be compatible anymore. During a not compatible item is selected in the hotbar, the off hand slot will be turned temporarily inactive.</br>
+To define this compatibility you can set it up in the item data table where the off hand item is. 
+Under EquipArmor you can find a field <b>OffHandCompatibility_IfOffHand</b>. If you hover that you should see a tooltip with an explanation how to use it. 
+However, here is this explanation too:</br></br>
+
+Only valid if EquipSlot is set to OffHand. 
+</br></br>
+If it should be compatible with all items, enter 'All'.
+</br></br>
+If it should be compatible with no item (so only if no item is in main hand), enter 'None'. 
+</br></br>
+If it should be compatible with specific items, enter the IDs separated with comma. 
+</br></br>
+If it should be compatible with all items except specific items, start with an '!' followed by the item IDs separated with comma (Note: The '!' should NOT be in front of each item ID but only the first char of this String)
+</br></br></br>
+
+The Off hand slot system is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.</br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="chests" class="accordion-link">Chests (Chest Containers / Campfires / Forges)</button><div class="panel"><p>
+Chests have different modules:
+</br></br>
+<ul style="padding-left: 30px">
+  <li>Chest Module</li>
+  <li>Starting Items Module</li>
+  <li>Cooking Module</li>
+  <li>Loot Dead Player Module</li>
+</ul>
+</br></br>
+In Blueprints -> Chests you can find some presets of different chests and cooking stations (using the chest system). 
+You can add new presets with different module settings to add for example larger storage boxes or other cooking stations with a different amount of cooking or fuel slots.</br>
+You can find these modules in the ClassDefaults of a chest actor.
+</br></br>
+<u>Chest Module</u></br>
+Activate this for a standard chest that contains some slots which a player can use to store items or take items away. You can apply filters to the slots.
+</br></br>
+<u>Starting Items Module</u></br>
+Can be combined with ChestModule or CookingModule. You can add some items that should be spawned at start. 
+For each item you can define a spawn probability (probability to appear) in order to make it more randomized.</br>
+Additionally you have the option to tick <b>isLootChest</b> which makes the chest one time openable while open means here directly 
+spawn the item actors around the chest if a player interacts with this chest.
+</br></br>
+<u>Cooking Module</u></br>
+If you activate this module, turn off the ChestModule. 
+You can define the amount of cooking/fuel/content slots and additionally define individually item/category filters for each of these 3 sections. 
+In an EventGraph of a cooking station make sure to run this on EventBeginPlay:</br></br>
+<img src="images/Chests_1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+The last binding is optional, since it’s only used for a visual (decorative) indicator if the cooking station is turned on or off. 
+If you add a whole new cooking station class, you can copy these nodes from <b>BP_Campfire</b>. Or you can just duplicate the <b>BP_Campfire</b> actor class and then adjust it.
+</br></br>
+<u>Loot Dead Player Module</u></br>
+Usually you are not creating new chests with this type. It is already used in <b>BP_LootDeadBodyChest</b> which should be enough.
+</br></br></br>
+<u>General information for slot amount regarding all chest types</u></br>
+In every chest module (except StartingItemsModule) you can change the slots amount by adjusting the bar amount and slots per bar amount. 
+However, the total slots amount of a chest is clamped by another variable. 
+At the beginning a certain amount of chest slot widgets will be created. 
+Smaller chests might use only a few of these slots while bigger chests use more slots or all of them. 
+So the chest slot widgets get reused each time you open a chest and they are not every time new created. 
+To change the maximum slots a chest can have you can adjust the <b>maxChestSlots</b> variable in <b>WB_ReplicatedSlotsManager</b>. 
+For the best performance please make sure that you set <b>maxChestSlots</b> only that high as your biggest chest demands.
+</br></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemDurability" class="accordion-link">Item Durability</button><div class="panel"><p>
+If you go to an item in an item data table you can set the Durability module to Enabled.
+Current Durability and MaxDurability should be self-explanatory.</br>
+DurabilityReductionPerUse is a value that can be taken to reduce the durability of an item. 
+If you are taking a look at the current Durability reduction input (for testing purposes) you probably understand it better. 
+The <b>AdjustDurabilityOfCurrentHotbarItemOnClient</b> event has an AdjustType where you can make use of the value that is defined in the data table. 
+But you can also make use of the CustomAmount to reduce, increase or set the durability to a new fixed value.</br></br>
+<img src="images/ItemDurability_1.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
+Another option in the data table is to constantly (over time) reduce the durability for an item. You can set some rules when it actually should reduce constantly durability. 
+An example is the torch that loses durability over time if it is equipped.</br></br>
+
+</p></div></div>
 
 
 
 
 </br></br></br></br></br>
-More to follow soon...
+
 
 
 <h1>Need further help? Get Support on Discord!</h1>
