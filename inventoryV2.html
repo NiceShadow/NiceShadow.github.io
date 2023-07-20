@@ -152,7 +152,7 @@ Anyways if you want to use P_MuzzleFlash, it's recommended that you open P_Muzzl
 
 </br>
 <div class="accordion-item"><button class="accordion-link" id="Update50to51">
-<p style="font-size: 1.1rem; ">Cooking Station Fuel ammount visual bug</p>
+<p style="font-size: 1.1rem; ">Cooking Station Fuel amount visual bug</p>
 </button><div class="panel"><p>
 First, nothing to worry about the actual fuel reduction is working as intended in the backend. Only in the frontend visually the fuel item is initially not reducing if placing first a cooking item
 and then a fuel item. But if the player updates the cooking UI only one frame later it should work. First create in <b>AC_InventoryPC_Component</b> this variable of the type <b>S_ChestCookingUpdateData</b>.
@@ -162,6 +162,18 @@ and then a fuel item. But if the player updates the cooking UI only one frame la
 Then you can fix it by modifying what the existing event UpdateOwnCookingUI is executing.
 </br></br>
 <img src="images/cookingFuelReduceFix_2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">important Backpack Bug Fix</p>
+</button><div class="panel"><p>
+There is a possible item duplication if removing items from a backpack under certain conditions.  You can fix it very easily by opening <b>WB_Inventory</b> and adding these 3 nodes here (in the yellow box)
+</br></br>
+<img src="images/backpack_bugfix.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
 </p></div></div>
 
 
