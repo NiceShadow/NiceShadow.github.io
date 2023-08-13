@@ -168,11 +168,35 @@ Then you can fix it by modifying what the existing event UpdateOwnCookingUI is e
 
 </br>
 <div class="accordion-item"><button class="accordion-link" id="Update50to51">
-<p style="font-size: 1.1rem; ">important Backpack Bug Fix</p>
+<p style="font-size: 1.1rem; ">Important Backpack Bug Fix</p>
 </button><div class="panel"><p>
-There is a possible item duplication if removing items from a backpack under certain conditions.  You can fix it very easily by opening <b>WB_Inventory</b> and adding these 3 nodes here (in the yellow box)
+There is a possible item duplication if removing items from a backpack under certain conditions.  You can fix it very easily by opening <b>WB_Inventory</b> and adding these 3 nodes here (in the yellow box):
 </br></br>
 <img src="images/backpack_bugfix.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Important Equip Bug Fix 1</p>
+</button><div class="panel"><p>
+It's possible to duplicate an equip item if equipping it from a backpack with the right click menu. Easy Fix: Open <b>AC_InventoryPC_Component</b> and adding these 2 nodes here (in the yellow box) in the <b>EquipArmorfromItem</b> function:
+</br></br>
+<img src="images/equip fix 1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Important Equip Bug Fix 2</p>
+</button><div class="panel"><p>
+Dragging an equippable item from a backpack slot onto an equip slot that has already an item leads to the loss of one item. Fix it very easily by opening <b>WB_EquipSlot</b> and in the <b>On Drop</b> function add these 2 nodes here (in the yellow box):
+</br></br>
+<img src="images/equip fix 2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
 </br></br>
 </p></div></div>
 
