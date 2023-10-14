@@ -20,6 +20,21 @@ body {
 }
 
 
+.blue_gd_text
+{
+font-family: 'Roboto';
+font-weight: 900;	
+width: auto;
+background: #FA0000;
+background: -webkit-linear-gradient(to right, #FA0000 0%, #84E2F5 50%);
+background: -moz-linear-gradient(to right, #FA0000 0%, #84E2F5 50%);
+background: linear-gradient(to right, #FA0000 0%, #84E2F5 50%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+}
+
+
 .customlink
 { 
 	color: #1cbdfc;
@@ -135,6 +150,18 @@ header ul li a:hover
 		display: block;
 		width: 100%;
 		background-image: url("images/bannerv2.png");
+		height: 26em;
+		background-size: 100%;
+		user-select: none;
+		background-repeat: no-repeat;
+		
+}
+.banner4 {
+		padding-left: 2px;
+		padding-top: 0em;
+		display: block;
+		width: 100%;
+		background-image: url("images/banner_interaction.png");
 		height: 26em;
 		background-size: 100%;
 		user-select: none;
