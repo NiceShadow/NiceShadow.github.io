@@ -1,0 +1,841 @@
+<html>
+	<head>
+		<title>NiceShadow</title>
+		<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" >
+		<link rel="icon" href="images/fl3.ico">
+		<meta http-equiv = "refresh" content = "3; url = https://www.qries.com" />
+	</head>
+	<body>
+		<header>
+			<a href="index.html" class="logo"><img src="images/home.png" width="auto" height="50px" alt="logo" onContextMenu="return false" data-ignore="true"></a>
+			<ul>
+				<li><a target="blank" href="https://www.unrealengine.com/marketplace/en-US/profile/NiceShadow?count=20&sortBy=effectiveDate&sortDir=DESC&start=0">Marketplace</a></li>
+				<li><a target="blank" href="https://www.youtube.com/NiceShadow">YouTube</a></li>
+				<li><a target="blank" href="https://discord.gg/cecaphy">Contact</a></li>
+			</ul>	
+		</header>
+		<script type="text/javascript">
+			window.addEventListener("scroll", function(){
+				var header = document.querySelector("header");
+				header.classList.toggle("sticky", window.scrollY > 0);
+		})
+		</script>
+	
+	
+<div class= "banner4">
+
+<!--<div class= "bannerText">NiceShadow</div></br>-->
+<div class="container2" style="padding-top:345px;">
+		<a href="https://discord.gg/cecaphy" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/contact1.png" alt="banner" class="banner" onContextMenu="return false" data-ignore="true"></div></a>
+		<a href="https://www.unrealengine.com/marketplace/en-US/profile/NiceShadow?count=20&sortBy=effectiveDate&sortDir=DESC&start=0" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/other2.png" alt="banner" class="banner" onContextMenu="return false" data-ignore="true"></div></a>
+		<a href="https://www.youtube.com/NiceShadow" style="text-decoration: none;" target="blank"><div class="boxa"><img src="images/other1.png" alt="banner" class="banner" onContextMenu="return false" data-ignore="true"></div></a>
+</div>
+</div>
+
+</br></br>
+
+
+
+
+
+<div class="container">
+
+<h1>Video Documentation</h1>
+</br>
+<div id="overlay" onclick="off()">
+  <div id="videoborder"><iframe id="myVideoId" width="1134" height="638" src="https://www.youtube.com/embed/c6N8h7RkkUQ" title="Integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+<!--
+  <button class="videobutton" onclick="on('https://www.youtube.com/embed/Cs6YZNjSlAA')"><img src="images/thumbnailIntegration.png" width="200px" height="auto" data-ignore="true" onContextMenu="return false;"></br></button>
+  <button class="videobutton" onclick="on('https://www.youtube.com/embed/1_QQNNqxzQY')"><img src="images/thumbnailadditems.png" width="200px" height="auto" data-ignore="true" onContextMenu="return false;"></br></button>
+</br></br>
+-->
+
+<h1>Integration Tutorials</h1>
+</br>
+<!--
+<button class="videobutton" onclick="on('https://www.youtube.com/embed/37_UHwp1abY')"><img src="images/thumnail_farming_system.png" width="200px" height="auto" data-ignore="true" onContextMenu="return false;"></br></button>
+</br></br></br>
+-->
+
+
+
+
+
+
+<h1>Written Documentation</h1>
+
+
+
+
+<!--
+<div class="accordion-item"><button id="InventoryModules" class="accordion-link">Title</button><div class="panel"><p>
+
+<img src="images/image.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+
+</p></div></div>
+-->
+
+<!--
+<a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>
+-->
+
+
+<div class="accordion-item"><button id="UsefulInventoryFunctions" class="accordion-link">Useful inventory functions you need to know</button><div class="panel"><p>
+Here is an image showing some basic inventory functions:</br></br>
+<img src="images/usefulinv_1.png" width="70%" height="auto" onContextMenu="return true;"></br></br>
+Having a reference to <b>WB_Inventory</b> is very useful. <b>GetInventoryRef</b> is a global function that you can get in every blueprint. 
+If you use it really often in a certain blueprint it might be useful to create an inventory reference variable but it is not necessary. 
+With the inventory ref you get access to the inventory player controller component <b>AC_InventoryPC_Component</b>. 
+For example you can get the current selected hotbar item from it.
+</br></br></br>
+<i>(NOTE in general if an inventory item is not visible the slot is empty so there is no item. 
+If you get the item data make sure before that the item is visible).</i>
+</br></br></br>
+From the player controller component you can also get the CharacterInventoryComponent.
+</br></br></br>
+To come back to the inventory reference the <b>AddItemSimple</b> node is often used to add items to the player’s inventory. 
+Also <b>GetTotalAmountOfID</b> is useful to count the current amount of items in the inventory. 
+You can also check if the amount is bigger than 0 to find out if at all an item is in the player’s inventory.
+</br></br>
+If you want that the server adds items to a player the server needs to know the controller of this player and by that can execute something like this:
+</br></br>
+<img src="images/usefulinv_2.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
+The ‘PC of player’ should not be the ‘get player controller node’ but maybe a player controller variable that the server received from the player. 
+For example a player wants to harvest an actor and requests it from the server while also passing its own player controller. 
+The server checks if the HP of the actor to harvest is still bigger 0 and there was no other player who requested the harvest a millisecond before. 
+Then the server determines if it is valid that a player gets the item and there is no glitch that 2 or more people got an item if there was only one item left.
+</br></br></br>
+Moreover you can get an array of all item slots with the inventory reference:</br></br>
+<img src="images/usefulinv_3.png" width="35%" height="auto" onContextMenu="return true;"></br></br>
+
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="BugFixes" class="accordion-link">Bug Fixes</button><div class="panel"><p>
+Here are some small bug fixes. Mostly there will be a marketplace update but if you are working with the inventory already it's not worth for you redoing the whole integration process.
+Instead you can do the steps below.
+</br></br>
+
+<div class="accordion-item"><button class="accordion-link">
+<p style="font-size: 1.1rem; ">Current 5.1 Bug Fixes</p>
+</button><div class="panel"><p>
+This is for everyone who is using ue5.1.
+The SetText node for editable texts has a buggy behaviour in ue5.1.
+The inventory uses it in the crafting menu. Because of the engine bug it is not possible to clear an entered text in an editable text box but only if the default text is empty too.
+To fix it, go to the EventGraph of WB_CraftingMenuSettings where you need to execute the SetText node twice. Make sure that the text input of the left SetText node is NOT empty. So you can enter
+for example '0' like on this image:</br>
+<img src="images/v51_fix2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+
+</p></div></div>
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Update from ue5.0 to ue5.1</p>
+</button><div class="panel"><p>
+Ignore this if you've downloaded the inventory after the 29th of November 2022 (then you have already a version that includes the bug fixes of this version).
+</br></br>
+If you have a 5.0 project and integrated the inventory already, you can go to your project's directory, right click on the .uproject file and select 'Switch Unreal Engine Version...'.
+Here choose 5.1 and click the Ok button. If you start the project now, it should open in ue5.1. Because of some engine bugs that appeared in 5.1 you can do the following workaround bug fixes:
+</br></br>
+
+1) Extend the following function like on the image:</br>
+<img src="images/v51_fix1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+
+2) Be aware that the muzzle flash (P_MuzzleFlash) can cause the GPU to crash. But it can depend on the GPU model and it's drivers.
+Anyways if you want to use P_MuzzleFlash, it's recommended that you open P_MuzzleFlash and deleted or deactivate all emitters except these two:</br>
+<img src="images/v51_fix3.png" width="50%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Cooking Station Fuel amount visual bug</p>
+</button><div class="panel"><p>
+First, nothing to worry about the actual fuel reduction is working as intended in the backend. Only in the frontend visually the fuel item is initially not reducing if placing first a cooking item
+and then a fuel item. But if the player updates the cooking UI only one frame later it should work. First create in <b>AC_InventoryPC_Component</b> this variable of the type <b>S_ChestCookingUpdateData</b>.
+</br></br>
+<img src="images/cookingFuelReduceFix_1.png" width="50%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
+Then you can fix it by modifying what the existing event UpdateOwnCookingUI is executing.
+</br></br>
+<img src="images/cookingFuelReduceFix_2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Important Backpack Bug Fix</p>
+</button><div class="panel"><p>
+There is a possible item duplication if removing items from a backpack under certain conditions.  You can fix it very easily by opening <b>WB_Inventory</b> and adding these 3 nodes here (in the yellow box):
+</br></br>
+<img src="images/backpack_bugfix.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Important Equip Bug Fix 1</p>
+</button><div class="panel"><p>
+It's possible to duplicate an equip item if equipping it from a backpack with the right click menu. Easy Fix: Open <b>AC_InventoryPC_Component</b> and adding these 2 nodes here (in the yellow box) in the <b>EquipArmorfromItem</b> function:
+</br></br>
+<img src="images/equip fix 1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
+</p></div></div>
+
+
+
+</br>
+<div class="accordion-item"><button class="accordion-link" id="Update50to51">
+<p style="font-size: 1.1rem; ">Important Equip Bug Fix 2</p>
+</button><div class="panel"><p>
+Dragging an equippable item from a backpack slot onto an equip slot that has already an item leads to the loss of one item. Fix it very easily by opening <b>WB_EquipSlot</b> and in the <b>On Drop</b> function add these 2 nodes here (in the yellow box):
+</br></br>
+<img src="images/equip fix 2.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br></br>
+</p></div></div>
+
+
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="InventoryModules" class="accordion-link">Inventory Modules</button><div class="panel"><p>
+There are 12 modules that you can turn on/off with one click in DA_InventoryModules:</br>
+<img src="images/inventorymodules.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+After turning off a module the blueprint is not executing blueprint nodes anymore that are related to that feature. Some of the modules are additionally just hiding widgets like for the ground list. However, for example if you don’t need the ground list you can also remove E_WB_GroundItemList from WB_Inventory (you would get one blueprint error that you should be able to resolve easily if you see it).
+In general disabling modules only makes blueprints not be executed, it’s not removing the corresponding blueprints. Please do NOT try to remove these blueprint parts since if the blueprint nodes get skipped anyways there would be no measurable performance difference and you would keep the possibility to turn on the feature again in the future.
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemStructure" class="accordion-link">Expanding item structure (S_ItemData) with new variables</button><div class="panel"><p>
+Warning: In ue5 structures got buggy. Before you decide to add new variables to any structure I recommend doing a backup of your project. 
+If you add a new variable to the structure set 'Editable' to false for this variable to prevent unexpected and random structure compiling errors.</br></br>
+<img src="images/itemstructure.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
+This problem rather happens in bigger structures like the item structure <b>S_ItemData</b>. 
+Another tip to reduce the buggy behavior and to keep the item data structure cleaner is to create sub structures (so normal structures that you add as a new variable to <b>S_ItemData</b>). 
+This makes sense if you want to expand the item data structure with different variables that belong to each other, like e.g. weapon data contains damage, shooting interval and so on.
+</p></div></div>
+
+
+<div class="accordion-item"><button id="AddRecipes" class="accordion-link">Crafting System - Add craftable item recipes</button><div class="panel"><p>
+In the data table <b>DT_CraftingRecipes</b> you can add a new row and set up the crafting recipe to your liking.</br></br>
+The tags are relevant for the search inside the crafting menu <b>WB_CraftingMenu</b>.</br></br>
+
+<div class="accordion-item"><button class="accordion-link"><p style="font-size: 1.1rem; ">Unlock System</p></button><div class="panel"><p>
+If you set a recipe in <b>DT_CraftingRecipes</b> on UnlockedByDefault: false, it will have a lock and you’re not able to craft this item. In your player controller you should find some key inputs (B, N, M) that should demonstrate how you can unlock a recipe.
+</br></br>
+From an inventory reference you need to get <b>RefCraftingMenu</b> and call the <b>UnlockCraftableItem</b> function. As ID enter the row name of a recipe that is added to <b>DT_CraftingRecipe</b>.
+</br></br>
+<img src="images/unlocksystem.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemString" class="accordion-link">ItemString: the light version of the item structure</button><div class="panel"><p>
+<u>How it works:</u></br>
+All items are based on a huge structure <a href="javascript:se('ItemStructure')" class="customlink">S_ItemData</a>. It contains all data of an item, such as the name, icon, amount and so on.
+All these different variables can be categorized into two groups:
+</br></br>
+The first group contains all static variables. This is everything that doesn’t change while playing. For example the name or icon of an item stays always the same. Or the description of items with the ID ‘wood’ stays always the same, no matter what a player does with the item during gameplay.
+</br></br>
+The second group contains all dynamic variables. So everything that can change while playing. For stackable items this is for example the amount. Or if an item has durability, the current durability is always dynamic.
+</br></br>
+If you want to know how to add own dynamic variables take a look in <a href="javascript:se('DynamicItemData')" class="customlink">Update item data variables at runtime (dynamic & static item data)</a>.
+</br></br>
+The ItemString is a formatted string that only contains the item ID and all dynamic data.
+With the ID, all static variables can be loaded again from the item data table.
+For you the ItemString can be used very easily. There are only two global functions that you need to know and that you can use in any blueprint. They convert the item structure <b>S_ItemData</b> to an ItemString and the other way around.
+</br></br>
+<img src="images/ItemString.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+The main advantage is that it’s much lighter to have a small string which contains only the relevant item data instead of a big item structure that contains stuff like directory paths to meshes or textures. For replication this is more efficient. Additionally to that, it’s much easier to store strings on an online database instead of a whole structure.
+</br>
+</p></div></div>
+
+
+<div class="accordion-item"><button id="DynamicItemData" class="accordion-link">Update item data variables at runtime (dynamic & static item data)</button><div class="panel"><p>
+The variables in the item structure <b>S_ItemData</b> are either static or dynamic to understand the difference and how it works take a look in <a href="javascript:se('ItemString')" class="customlink">ItemString:  the light version of the item structure</a>
+</br></br>
+So how to proceed if you want to make a certain variable <b>in S_ItemData</b> dynamic - possible to edit the value while playing. 
+First open <b>BP_InventoryFunctions</b>. Go to the function <b>ItemDataToString</b>. 
+From the Break <b>S_ItemData</b> you need to get your variable and convert it to the string (if it is not possible to convert it to a string you also cannot make this variable dynamic). 
+Then you need a new <b>FormatItemDataString</b> node where you can put your string value in the Value pin. Also make sure that ‘Add’ is true, otherwise it would ignore this node. 
+Then you need to come up with a VariableNameID (like a key) - keep it short. Finally plug the Result of <b>FormatItemDataString</b> in a new pin of the Append node. 
+</br></br>
+Next go in the function <b>StringToItemData</b>. Add a pin to <b>the Switch on String</b> node. Make sure that this pin value matches the VariableNameID you applied before in <b>ItemDataToString</b>. 
+Then you need to Set members in the ItemData variable or in a sub-structure of it and put it in the Value variable for the variable that should be dynamic. 
+It helps look at how it is made for the already existing dynamic variables.
+</br></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">Save & Load Game</button><div class="panel"><p>
+In your player controller you should find some key inputs that show how to trigger the save and load game functions for the inventory.</br></br>
+<img src="images/SaveAndLoad1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+</br>
+By default chests/containers are ignored from the save & load game functions.
+But you can change it really easily:
+Select a chest in your map. There, go to the Details tab and set the SaveGameID. If the SaveGameID is unique among all other chests/containers placed in the map, it's relevant for save game. If you don't want that it will be saved you can set the SaveGameID to 'No save game'.
+</br></br>
+<img src="images/SaveAndLoad2.png" width="70%" height="auto" onContextMenu="return true;"></br></br>
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">Add new body Equip slots/categories</button><div class="panel"><p>
+First add a new entry to the ennumeration E_ArmorEquipSlot
+</br></br>
+<img src="images/equip1.png" width="40%" height="auto" onContextMenu="return true;">
+</br></br></br></br>
+In WB_EquipInventory (in the Design tab) you can now add a new WB_EquipSlot (Select your category on the right). This slot does not need to be necessarily inside WB_EquipInventory but make sure that WB_EquipInventory has a reference to this new equip slot: Take a look in the EventGraph and make sure that the equip slot is part of the Slots array.
+</br></br>
+<img src="images/equip2.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br></br>
+Info: The progress of adding a new equippable item is shown in the AddItems tutorial too.</br></br>
+<button class="videobutton" onclick="on('https://www.youtube.com/embed/1_QQNNqxzQY')"><img src="images/thumbnailadditems.png" width="200px" height="auto" onContextMenu="return false;"></br></button>
+</br></br>
+When you set up an item in a datatable make sure that the sub-structure EquipArmor is enabled and that you've selected your new category in the variable EquipSlot.
+</br></br>
+<img src="images/equip0.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br></br>
+If you play and try to equip the new item it will search in your character for a skeletal- or static mesh or a child actor (depending on what you added in the item table) that has a tag that matches the category you've added before in E_ArmorEquipSlot.
+</br></br>
+<img src="images/equip3.png" width="90%" height="auto" onContextMenu="return true;">
+</br></br></br>
+</p></div></div>
+
+
+<div class="accordion-item"><button id="EquipNotify" class="accordion-link">Equip Notify Events (Hand and Body/Armor)</button><div class="panel"><p>
+There are several events that get triggered (already replicated, so they get called on each client and the server) if you equip or unequip an item either in hand or body. 
+You can make use of these events if you add them in your character.
+Then click on <b>AC_InventoryCharacterComponent</b> and in the Details tab you can add these Events to your Event Graph like on the image shown below.
+</br></br>
+<ul style="padding-left: 30px">
+  <li>EventOnEquipID_Hand</li>
+  <li>EventOnUnequipID_Hand</li>
+  <li>EventOnEquipID_Body</li>
+  <li>EventOnUnequipID_Body</li>
+  <li>EventOnEquipmentChanged_GetAllEquippedItems</li>
+</ul>
+</br></br>
+<img src="images/EquipNotify_1.png" width="100%" height="auto" onContextMenu="return true;">
+</br></br></br>
+<u>Hand (hotbar)</u></br>
+Whenever you select an item in the hotbar (hand equip) EventOnEquipID_Hand and EventOnUnequipID_Hand get triggered. 
+You can add Switch on Name nodes here to execute further events that should happen on equip or unequip of a certain item ID.
+<img src="images/EquipNotify_2.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br>
+
+<u>Body/Armor (Equip Inventory)</u></br>
+There are also several events that get triggered if there are any changes of items being added or taken away from the equip menu:
+<img src="images/EquipNotify_3.png" width="50%" height="auto" onContextMenu="return true;">
+</br></br></br>
+As you can see, the last event <b>EventOnEquipmentChanged_GetAllEquippedItems</b> passes an array of all equipped body items.
+</br></br>
+Example - armor points and damage reduction:</br>
+This is useful if you want to calculate for example armor points. 
+So for example with ForEachLoop you can calculate a sum of an integer variable (that you need to add - a variable that should represent the armor strength of this item). 
+This sum can be stored in a variable that could be implemented in your damage system for damage reduction. 
+Here it would also make sense to calculate this variable only on server and since this event is triggered for all players, 
+you can make sure with a SwitchHasAuthority node that it only will be calculated on Server (Authority = Server).
+</br></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="filter" class="accordion-link">Item Filters & Item Category Filter</button><div class="panel"><p>
+These are filters that are used in different areas of the inventory. Generally every slot can have a filter to determine which items it accepts. 
+For backpacks or chests it’s also possible to apply filters to all of their slots.
+Besides that these filters also find a use case for <a href="javascript:se('AutoPickUpMode')" class="customlink">AutoPickUpMode</a>.
+</br></br>
+<b>How to adjust the filters</b>
+</br></br>
+ItemFilter:</br>
+It’s a String that you can leave empty to apply no filter. 
+Enter all item IDs separated with ',' that should get accepted. Starting with '!' inverts the filter (so these items are excluded). 
+NOTE: the '!' should only be the first char of this value and NOT in front of each item ID.
+</br></br>
+CategoryFilter:</br>
+Same as ItemFilter it’s a String that you can leave empty to apply no filter. 
+Enter all item categories separated with ',' that should get accepted. Starting with '!' inverts the filter (so these categories are excluded). 
+NOTE: the '!' should only be the first char of this value and NOT in front of each category.
+
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemCategories" class="accordion-link">Item Categories</button><div class="panel"><p>
+These are the default item categories:</br>
+<img src="images/itemcategories.png" width="30%" height="auto" onContextMenu="return true;"></br></br>
+They can be used for Item Category Filters so for example you could make a chest that only can store items of the category Resources. Or that your character only can auto pick up items of the category Ammo.
+Besides that the item category is being displayed in the ItemInfo, InfoPickUp and the ItemInspector.
+</br></br>
+To add or remove item categories you can simply do that in the enumeration <b>E_ItemCategory</b>.
+</br></br>
+To apply or change the item category of an item you can do that in the ItemDataTables (AdditionalGeneralData->Category)
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="AutoPickUpMode" class="accordion-link">AutoPickUpMode</button><div class="panel"><p>
+Automatically picking up items if a player walks above item actors.
+The inventory automatically fetches a box or sphere collision component in your character that has the tag ‘autopickup’</br></br>
+<img src="images/autopickup.png" width="80%" height="auto" onContextMenu="return true;"></br></br></br>
+Also make sure that this collision component has Generate Overlap Events enabled, 
+has an object type of WorldDynamic and overlaps PhysicsBody all other channels can be set to Ignore. Like here:</br></br>
+<img src="images/autopickup2.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
+By default the auto pick up mode only picks up Ammo. This is an Item Category filter in AC_InventoryCharacterComponent. There you can adjust the filters in the 2 string variables CurrentAutoPickUpModeItemFilter and CurrentAutoPickUpModeCategoryFilter (Help to set up these filters).
+</br></br>
+The AutoPickUpMode is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.</br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ConsumeItem" class="accordion-link">Consume Item</button><div class="panel"><p>
+To make an item consumable you need to go to the item in the item data table. There under 'ConsumeItem' set Enabled to true. 
+Now you can hold right mouse button while you’ve the item selected in the hotbar / holding it in hand (to change the right mouse button input you can do that in your player controller).
+</br></br>
+<img src="images/Consume1.png" width="50%" height="auto" onContextMenu="return true;"></br></br></br>
+In the item data table you have more settings like duration or wether the item should only be consumable if the character is on ground -> this could be 
+useful if you add a consume montage where it could look bad if the character is playing the montage while jumping or moving. It is an array so 
+you could play different montages depending on potentially different skeletons that your player character can have. 
+To determine which array element should be taken here by a character, you can change the array index by adjusting the MontageIndex in your character. 
+You can find that if you select in the components tab <b>AC_InventoryCharacterComponent</b> in your character. In the Details tab you can now adjust the MontageIndex.</br></br>
+<img src="images/Consume2.png" width="35%" height="auto" onContextMenu="return true;"></br></br>
+Finally in the data table you can set the ConsumeFinishedTag. This tag will be passed in a function that will be triggered once you have consumed an item. 
+Depending on the tag you can execute further events and effects. 
+In <b>AC_InventoryCharacterComponent</b> you can find the function <b>OnItemConsumed</b>. 
+Here you add more tags to the 'Switch on String'.
+</br></br>
+<img src="images/Consume3.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="OffHand" class="accordion-link">Off Hand / 2nd hand items</button><div class="panel"><p>
+
+<img src="images/OffHand_1.png" width="60%" height="auto" onContextMenu="return true;"></br></br>
+
+The off hand / 2nd hand slot is a special equip slot that is managed by the <b>WB_EquipInventory</b>. Hence the <b>WB_EquipInventory</b> has a reference to this equip slot.
+The inventory has a torch item as example for an off hand item - if you equip a torch to this slot, 
+the torch shows up in the player’s left hand and the character also enters a holding pose in the animation blueprint.
+</br></br>
+<u>Off Hand Compatibility</u></br>
+There might be some items (like certain weapons) that need both hands. 
+In this case the off hand should not be compatible anymore. During a not compatible item is selected in the hotbar, the off hand slot will be turned temporarily inactive.</br>
+To define this compatibility you can set it up in the item data table where the off hand item is. 
+Under EquipArmor you can find a field <b>OffHandCompatibility_IfOffHand</b>. If you hover that you should see a tooltip with an explanation how to use it. 
+However, here is this explanation too:</br></br>
+
+Only valid if EquipSlot is set to OffHand. 
+</br></br>
+If it should be compatible with all items, enter 'All'.
+</br></br>
+If it should be compatible with no item (so only if no item is in main hand), enter 'None'. 
+</br></br>
+If it should be compatible with specific items, enter the IDs separated with comma. 
+</br></br>
+If it should be compatible with all items except specific items, start with an '!' followed by the item IDs separated with comma (Note: The '!' should NOT be in front of each item ID but only the first char of this String)
+</br></br></br>
+
+The Off hand slot system is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.</br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="chests" class="accordion-link">Chests (Chest Containers / Campfires / Forges)</button><div class="panel"><p>
+Chests have different modules:
+</br></br>
+<ul style="padding-left: 30px">
+  <li>Chest Module</li>
+  <li>Starting Items Module</li>
+  <li>Cooking Module</li>
+  <li>Loot Dead Player Module</li>
+</ul>
+</br></br>
+In Blueprints -> Chests you can find some presets of different chests and cooking stations (using the chest system). 
+You can add new presets with different module settings to add for example larger storage boxes or other cooking stations with a different amount of cooking or fuel slots.</br>
+You can find these modules in the ClassDefaults of a chest actor.
+</br></br>
+<u>Chest Module</u></br>
+Activate this for a standard chest that contains some slots which a player can use to store items or take items away. You can apply filters to the slots.
+</br></br>
+<u>Starting Items Module</u></br>
+Can be combined with ChestModule or CookingModule. You can add some items that should be spawned at start. 
+For each item you can define a spawn probability (probability to appear) in order to make it more randomized.</br>
+Additionally you have the option to tick <b>isLootChest</b> which makes the chest one time openable while open means here directly 
+spawn the item actors around the chest if a player interacts with this chest.
+</br></br>
+<u>Cooking Module</u></br>
+If you activate this module, turn off the ChestModule. 
+You can define the amount of cooking/fuel/content slots and additionally define individually item/category filters for each of these 3 sections. 
+In an EventGraph of a cooking station make sure to run this on EventBeginPlay:</br></br>
+<img src="images/Chests_1.png" width="100%" height="auto" onContextMenu="return true;"></br></br>
+The last binding is optional, since it’s only used for a visual (decorative) indicator if the cooking station is turned on or off. 
+If you add a whole new cooking station class, you can copy these nodes from <b>BP_Campfire</b>. Or you can just duplicate the <b>BP_Campfire</b> actor class and then adjust it.
+</br></br>
+<u>Loot Dead Player Module</u></br>
+Usually you are not creating new chests with this type. It is already used in <b>BP_LootDeadBodyChest</b> which should be enough.
+</br></br></br>
+<u>General information for slot amount regarding all chest types</u></br>
+In every chest module (except StartingItemsModule) you can change the slots amount by adjusting the bar amount and slots per bar amount. 
+However, the total slots amount of a chest is clamped by another variable. 
+At the beginning a certain amount of chest slot widgets will be created. 
+Smaller chests might use only a few of these slots while bigger chests use more slots or all of them. 
+So the chest slot widgets get reused each time you open a chest and they are not every time new created. 
+To change the maximum slots a chest can have you can adjust the <b>maxChestSlots</b> variable in <b>WB_ReplicatedSlotsManager</b>. 
+For the best performance please make sure that you set <b>maxChestSlots</b> only that high as your biggest chest demands.
+</br></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="ItemDurability" class="accordion-link">Item Durability</button><div class="panel"><p>
+If you go to an item in an item data table you can set the Durability module to Enabled.
+Current Durability and MaxDurability should be self-explanatory.</br>
+DurabilityReductionPerUse is a value that can be taken to reduce the durability of an item. 
+If you are taking a look at the current Durability reduction input (for testing purposes) you probably understand it better. 
+The <b>AdjustDurabilityOfCurrentHotbarItemOnClient</b> event has an AdjustType where you can make use of the value that is defined in the data table. 
+But you can also make use of the CustomAmount to reduce, increase or set the durability to a new fixed value.</br></br>
+<img src="images/ItemDurability_1.png" width="80%" height="auto" onContextMenu="return true;"></br></br>
+Another option in the data table is to constantly (over time) reduce the durability for an item. You can set some rules when it actually should reduce constantly durability. 
+An example is the torch that loses durability over time if it is equipped.</br></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button id="lootdeadbody" class="accordion-link">Loot Dead Body</button><div class="panel"><p>
+If the player dies, other players can loot the inventory of this player.</br>
+To make the character mesh interactable, make sure that it blocks the visibility channel.
+</br></br>
+The LootDeadBody system is a module that you can turn off in <a href="javascript:se('InventoryModules')" class="customlink">DA_InventoryModules</a>.</br>
+</p></div></div>
+
+
+
+
+</br></br></br></br></br>
+
+
+
+<h1>Need further help? Get Support on Discord!</h1>
+</br>
+<iframe src="https://discord.com/widget?id=409731562310074368&theme=dark" width="400" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="-webkit-box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.53);-moz-box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.53);box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.53);"></iframe>
+</br></br>
+<!--
+<div class="accordion-item"><button class="accordion-link">
+How to update the inventory to the latest version (v 1.6) ?
+</button><div class="panel"><p>
+Before you try to update to the latest version, it's recommended to backup your project. Then create a new inventory project:</br>
+<img src="images/cp.png" width="auto" height="auto" onContextMenu="return false;"></br></br>
+Now you can do different things, depending on the changes you made in the inventory system. If you currently have v 1.5 it's the easiest way to update only the things that are new in this verion (described in next dropdwon menu)
+If your version is v 1.4 or older it's in most cases the easiest way to replace the whole inventory with the new version.
+Then you can copy the table entries (Item_Table & Craft_Table) from your backup project and paste them in your project. Further you can change the UI if you made changes there before.
+And do the changes you may made in the bleuprint of the inventory.
+</br></br>
+<div class="accordion-item"><button class="accordion-link">
+Update from v 1.52 to v 1.6 (latest)
+</button><div class="panel"><p>
+This update contains many new features and updating it from an older version takes much time.</br>
+If you didn't make big changes to the inventory and only added items, changed the UI or did small other changes, I would recommend to replace the whole inventory and then do the changes you had before again.
+Before your're doing backup your project.</br></br>
+If you made big changes to the inventory there is also the option to add all changes manually.</br>
+If you decide to do that make sure that your project is on v 1.52.</br>
+Create a new project with v 1.6 and search in the whole project for 'new in v 1.6' like on this image:</br></br>
+<img src="images/FindResults4.png" width="auto" height="auto" onContextMenu="return false;"></br>
+NOTE: It should return 91 comment boxes. If you have less results repeat the search (it's sometimes buggy).</br></br>
+Then you can copy and integrate the blueprint that is in these blue comment boxes to your project.
+</br>
+</p></div></div>
+<div class="accordion-item"><button class="accordion-link">
+Update from v 1.51 to v 1.52
+</button><div class="panel"><p>
+There's only one small bug fix and the update won't take much time.</br>
+Create a new project with v 1.52 and search in the whole project for 'Bug Fix v 1.52' like on this image:</br></br>
+<img src="images/FindResults3.png" width="auto" height="auto" onContextMenu="return false;"></br>
+NOTE: It should return 2 comment boxes. If you have less results repeat the search (it's sometimes buggy).</br></br>
+Then you can copy and integrate the blueprint that is in these green comment boxes to your project.
+</br>
+</p></div></div>
+<div class="accordion-item"><button class="accordion-link">
+Update from v 1.5 to v 1.51
+</button><div class="panel"><p>
+There are only small bug fixes and the update won't take much time.</br>
+Create a new project with v 1.51 and search in the whole project for 'Bug Fix v 1.51' like on this image:</br></br>
+<img src="images/FindResults2.png" width="auto" height="auto" onContextMenu="return false;"></br>
+NOTE: It should return 6 comment boxes. If you have less results repeat the search (it's sometimes buggy).</br></br>
+Then you can copy and integrate the blueprint that is in these blue comment boxes to your project.
+</br>
+</p></div></div>
+<div class="accordion-item"><button class="accordion-link">
+Update from v 1.4 to v 1.5
+</button><div class="panel"><p>
+If you made small or no changes in blueprint, update the whole inventory like described above.</br></br>
+If you made huge changes in blueprint you have the option to update only the blueprints that are new in v 1.5.</br>
+Search from any bleuprint in the whole project for 'new in v 1.5' like on this image:</br>
+<img src="images/FindResults1.png" width="auto" height="auto" onContextMenu="return false;"></br>
+NOTE: It should return more than 130 comment boxes. If you have less results repeat the search (it's sometimes buggy).</br></br>
+All the bleuprint that is in these comment boxes is new in v 1.5.
+</p></div></div>
+</p></div></div>
+
+
+
+<div class="accordion-item"><button class="accordion-link">
+Integration into your project
+</button><div class="panel"><p>
+You can either use the project as a base or add it to an existing project!
+This is very easy, even if you already have a player controller, game mode, 
+character or HUD. Here is a tutorial where I show you the individual steps that 
+you can take according to your needs. If you want to import the inventory project to your project make sure that you have the same collision channels in your project (I show it at the beginning of the tutorial).
+<iframe width="1134" height="638" src="https://www.youtube.com/embed/PpWEsdawhOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</br></br>
+<div class="accordion-item"><button class="accordion-link">
+<p style="color: grey; font-size: 1.1rem; ">Things you have to note if you want to combine it with ALS (Advanced Locomotion System V4)</p>
+</button><div class="panel"><p>
+If you can't climb/mantle anymore check the value of these two Trace Channels.
+Due to the import it could be changed to "PlaceTrace". Then you have to set it back to "Climbable".</br></br>
+<img src="images/alsBug1.png" width="100%" height="auto" onContextMenu="return false;">
+</p></div></div>
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">
+Add new items
+</button><div class="panel"><p>
+Open "Item_Table" and click on "Add" to add new items. <boldtext>To prevent any further problems make sure 
+that your Row Names must start with "NewRow_" + a unique number and set the ID to this number +1 (e.g. NewRow_12 and the ID is 13). 
+An exception is the Row Name "NewRow". This is for ID = 0.</boldtext> On the image are descriptions of the different variables you can setup in the Row Editor
+of the selected item.</br></br>
+<img src="images/add.png" width="100%" height="auto"></br></br>
+<div class="accordion-item"><button class="accordion-link">
+<p style="font-size: 1.1rem; ">Add pickupable ground items</p>
+</button><div class="panel"><p>
+Just drag 'BP_NewDropItemActor_Master' into your map:</br></br>
+<img src="images/PuckupItem.png" width="50%" height="auto" onContextMenu="return false;"></br></br>
+In the Details tab of this item set 'Spawn at Start?' on true. Then you change ID and Amount At start and you should see the mesh updating in the editor automatically.</br>
+<img src="images/ItemSpawnAtStart.png" width="50%" height="auto" onContextMenu="return false;"></br></br>
+
+</p></div></div>
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">
+Add new craftable items
+</button><div class="panel"><p>
+Open "Craft_Table" and click on "Add" to add new craftable items. <boldtext>To prevent any further problems make sure 
+that your first row name is 'NewRow' your 2nd would be 'NewRow_0' then 'NewRow_1' and so on. So just add new rows, don't rename them and you should be fine. 
+</boldtext> On the image are descriptions of the different variables you can setup in the Row Editor of the selected item.</br></br>
+<img src="images/add2.png" width="100%" height="auto">
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">
+Setup armor
+</button><div class="panel"><p>
+(soon)
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">
+Things you can do if you've a Packaging Error
+</button><div class="panel"><p>
+Sometimes it helps to compile (even if it's already compiled) and save all blueprints (including the widget blueprints) regarding the inventory.
+If this didn't help please contact me.
+</p></div></div>
+-->
+
+<h1>Version Log</h1>
+
+
+<div class="accordion-item"><button class="accordion-link">Detailed feature list of current version (v 2.0.3)</button><div class="panel"><p>
+
+<ul style="padding-left: 30px">
+  <li>Add new items in data tables: Set up an item with more than 80 variables to tweak</li>
+  <li>Easy to expand item structure</li>
+  <li>Item structure organized in modules (e.g. simply toggle rarity or durability on/off)</li>
+  <li>Drag & Drop: Rearrange, swap & split items</li>
+  <li>Drop items physical on floor</li>
+  <li>Pick up items (by focusing it / by ground list / by auto pick up mode)</li>
+  <li>Groundlist: Shows all items near the player (possible to pick up a specific amount)</li>
+  <li>Auto Pick Up Mode: Walk above items to pick them up (relevancy filter for certain items can be added)</li>
+  <li>Equip items to hand or body (easy notify event about equipped/unequipped item IDs)</li>
+  <li>Off Hand: Equip item to 2nd hand (define with which main hand items it is compatible)</li>
+  <li>Advanced Chest System (Define slot amount, item filter, chest mesh & starting items)</li>
+  <li>Chest Multiplayer experience on next level (Move item around locally and without latency. Server validates each step in backend. Usually players need to wait on each validation which feels bad with a ping > 50. But in this inventory it feels fluent which is outstanding!)</li>
+  <li>Cooking Station: Based on chest system (Campfire, Forge -> Easy to add more types because system is highly customizable)</li>
+  <li>Loot Chest: Opens only once and drops some items on floor (define which items it should contain with % possibility whether item should be in)</li>
+  <li>Consume items: Easy notify with item ID after item got successfully consumed</li>
+  <li>Backpacks: Add additonal slots (Support for multiple backpack equipped at same time)</li>
+  <li>Vendor and money system (Add starting products, Buy, Sell -> either to AI or to other players)</li>
+  <li>Player to player trade (fair trade solution for 2 players -> Both need to confirm a trade)</li>
+  <li>Player to player trades: Swap item with item, Sell/Buy an item with money</li>
+  <li>Crafting System (Add recipes in data table, queue system, unlock recipes system)</li>
+  <li>Loot dead body (Player ragdoll death with respawn system) - Players can inspect dead body like a chest</li>
+  <li>Inspect items (Possible if hovering item in UI or if tracing item actor in world) - Drag to rotate mesh preview</li>
+  <li>Anvil: Dismantle & destroy items</li>
+  <li>Interaction System (Easy to make everything interactable)</li>
+  <li>Basic, optional Third Person Shooter (Recoil, aim, reload, projectile, damage (+ head shot multiplier), accuracy - All based on values of equipped weapon)</li>
+  <li>Health & Damage system</li>
+  <li>Item rarity (Visually colorize item background & info about rarity type)</li>
+  <li>Item durability (lose/gain durability per use or lose constantly durability if equipped e.g. torch)</li>
+  <li>Item String (Short, efficient string of all dynamic item data (e.g. amount) that can not be taken from static data table values): Lighter for replication & storing item data</li>
+  <li>Save & Load Game and possibility to store in database (Player inventory items, money, crafting unlocks, item actors on ground, vendor & chest data)</li>
+  <li>System to store all this data in single strings or in string arrays</li>
+</ul></br>
+
+</p></div></div>
+
+
+<div class="accordion-item"><button class="accordion-link">Features and bug fixes of all versions</button><div class="panel"><p>
+
+<h3>New in v 2.0</h3></br>
+<ul style="padding-left: 30px">
+  <li>Revised UI</li>
+  <li>New meshes</li>
+  <li>Loot dead body</li>
+  <li>Anvil</li>
+  <li>Crafting Unlock system</li>
+  <li>Off hand/2nd hand equip slot</li>
+  <li>Health & Damage system</li>
+  <li>Multiple bakcpack support</li>
+  <li>New interaction system</li>
+  <li>Item rarity</li>
+  <li>Item String</li>
+  <li>and many more improvements & bug fixes</li>
+</ul></br></br></br>
+
+<h3>New in v 1.6</h3></br>
+<ul style="padding-left: 30px">
+  <li>Shop/Vendor: Product creator; product browser; sell to other players or AI</li>
+  <li>Player to player trade: Trade in items; buy items; sell items</li>
+  <li>Simple money system; It's stored in player state -> perfect for one session, otherwhise it's recommended to manage the money on a cloud so a player can receive offline money.</li>
+  <li>3D item inspector: rotate item; item info and description</li>
+  <li>Campfires can cook a certain amount at once now</li>
+  <li>Option to equip item for the left hand too</li>
+  <li>Bug fixes</li>
+</ul></br></br></br>
+
+<h3>New in v 1.51 (bug fixes of the following bugs)</h3></br>
+<ul style="padding-left: 30px">
+  <li>Equip in hand when swapping items within the hotbar</li>
+  <li>Swapping a fuel and armor item to an equip item (no fuel) from a fuel slot in the campfire</li>
+  <li>Hiding the weapon UI hides it on other clients as well (only in editor)</li>
+  <li>Dragging an armor item from an armor slot doesn't show the slot background again</li>
+</ul></br></br></br>
+
+<h3>New in v 1.5</h3></br>
+<ul style="padding-left: 30px">
+  <li>Campfire (easy o change amount of cooking/fuel/content slots)</li>
+  <li>Backpack (set slot amount in ItemTable)</li>
+  <li>Simple Third Person Shooter to show how it's connected with the inventory + weapon info & ammo system</li>
+  <li>Lootboxes: hold a key to open -> drops items or adds them directly to the inventory</li>
+  <li>A few bug fixes (ask me for details)</li>
+  <li>and other small adjustments</li>
+</ul></br></br></br> 
+
+<h3>New in v 1.4</h3></br>
+<ul style="padding-left: 30px">
+  <li>bug fixes for chest replication</li>
+  <li>Define amount of chest slots in each chest actor</li>
+  <li>Place items in your map (editor)</li>
+  <li>Consume items and durability for items</li>
+  <li>faster setup for your PC or GM (Interfaces and Components)</li>
+</ul></br></br></br> 
+
+</p></div></div>
+
+
+</div>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+<script>
+window.onload = function() {
+    var images = document.getElementsByTagName('img');
+    for (var i = 0; i < images.length; i++) {
+        var img = images[i];
+        if(img.getAttribute('data-ignore') !== 'true') {
+            var link = document.createElement('a');
+            link.href = img.src;
+            link.target = '';
+            img.parentNode.insertBefore(link, img);
+            link.appendChild(img);
+        }
+    }
+}
+
+
+
+
+var acc = document.getElementsByClassName("accordion-link");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+function se(pID){
+    var element = document.getElementById(pID);
+    var headerOffset = 120;
+    var elementPosition = element.getBoundingClientRect().top;
+    var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+    window.scrollTo({
+         top: offsetPosition,
+         behavior: "smooth"
+    });
+
+
+	if(element.nextElementSibling.style.display != "block"){
+	element.click();
+	}
+}
+
+//overlay
+function hideallvideos() {
+
+	var videos = document.querySelectorAll('iframe, video');
+	Array.prototype.forEach.call(videos, function (video) {
+		if (video.tagName.toLowerCase() === 'video') {
+			video.pause();
+		} else {
+			var src = video.src;
+			video.src = src;
+		}
+	});
+
+}
+
+
+
+//overlay1
+function on(url) {
+    document.getElementById("overlay").style.display = "block";
+    //var site = url+'?toolbar=0&amp;navpanes=0&amp;scrollbar=0';
+    document.getElementById('myVideoId').src = url;
+}
+function off() {
+    document.getElementById("overlay").style.display = "none";
+	//hideallvideos();
+	document.getElementById('myVideoId').src = 'https://www.youtube.com/embed/c6N8h7RkkUQ';
+}
+
+</script>
+<html>
