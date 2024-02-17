@@ -215,10 +215,13 @@ In general disabling modules only makes blueprints not be executed, it’s not r
 
 
 <div class="accordion-item"><button id="ItemStructure" class="accordion-link">Expanding item structure (S_ItemData) with new variables</button><div class="panel"><p>
-Warning: In ue5 structures got buggy. Before you decide to add new variables to any structure I recommend doing a backup of your project. 
+WARNING: In ue5 structures got buggy. Before you decide to add new variables to any structure I highly recommend doing a backup of your project.
 If you add a new variable to the structure set 'Editable' to false for this variable to prevent unexpected and random structure compiling errors.</br></br>
 <img src="images/itemstructure.png" width="40%" height="auto" onContextMenu="return true;"></br></br>
-This problem rather happens in bigger structures like the item structure <b>S_ItemData</b>. 
+</br>
+VERY IMPORTANT: After you have added a variable to a structure save the structure but do NOT save other classes. Now test to play.
+If this is not possible and you get confronted with bleuprint errors close your project and do NOT Save these classes and press 'Don't save'.
+After that you can open your project again.</br></br>
 Another tip to reduce the buggy behavior and to keep the item data structure cleaner is to create sub structures (so normal structures that you add as a new variable to <b>S_ItemData</b>). 
 This makes sense if you want to expand the item data structure with different variables that belong to each other, like e.g. weapon data contains damage, shooting interval and so on.
 </p></div></div>
